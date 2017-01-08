@@ -7,19 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PW_Final
+namespace PW_Final.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class RespostaPedido
+    public partial class AspNetUserLogins
     {
-        public int Id { get; set; }
-        public double Valor { get; set; }
-        public bool Aceite { get; set; }
-        public int PedidoReparacaoId { get; set; }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string UserId { get; set; }
     
-        public virtual PedidoReparacao PedidoReparacao { get; set; }
-        public virtual Oficina Oficina { get; set; }
+        public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }

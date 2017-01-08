@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PW_Final
+namespace PW_Final.Models
 {
     using System;
     using System.Data.Entity;

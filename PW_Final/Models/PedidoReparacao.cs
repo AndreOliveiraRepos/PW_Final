@@ -7,26 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PW_Final
+namespace PW_Final.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TipoReparacao
+    public partial class PedidoReparacao
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TipoReparacao()
+        public PedidoReparacao()
         {
-            this.Oficina = new HashSet<Oficina>();
-            this.PedidoReparacao = new HashSet<PedidoReparacao>();
+            this.RespostaPedido = new HashSet<RespostaPedido>();
         }
     
         public int Id { get; set; }
-        public string Descricao { get; set; }
+        public string DescricaoAvaria { get; set; }
+        public System.DateTime DataPedido { get; set; }
+        public short Avaliacao { get; set; }
+        public string AspNetUsersId { get; set; }
+        public int TipoReparacaoId { get; set; }
     
+        public virtual AspNetUsers AspNetUsers { get; set; }
+        public virtual TipoReparacao TipoReparacao { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Oficina> Oficina { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PedidoReparacao> PedidoReparacao { get; set; }
+        public virtual ICollection<RespostaPedido> RespostaPedido { get; set; }
     }
 }

@@ -185,21 +185,21 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
-    <EntityDeploy Include="OficinaModel.edmx">
+    <EntityDeploy Include="Models\OficinaModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>OficinaModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="OficinaModel.edmx.diagram">
+    <Content Include="Models\OficinaModel.edmx.diagram">
       <DependentUpon>OficinaModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="OficinaModel.Context.tt">
+    <Content Include="Models\OficinaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>OficinaModel.edmx</DependentUpon>
       <LastGenOutput>OficinaModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="OficinaModel.edmx.sql" />
-    <Content Include="OficinaModel.tt">
+    <Content Include="Models\OficinaModel.edmx.sql" />
+    <Content Include="Models\OficinaModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>OficinaModel.edmx</DependentUpon>
       <LastGenOutput>OficinaModel.cs</LastGenOutput>
@@ -368,16 +368,16 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="AspNetRoles.cs">
+    <Compile Include="Models\AspNetRoles.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AspNetUserClaims.cs">
+    <Compile Include="Models\AspNetUserClaims.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AspNetUserLogins.cs">
+    <Compile Include="Models\AspNetUserLogins.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AspNetUsers.cs">
+    <Compile Include="Models\AspNetUsers.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
@@ -387,7 +387,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="C__MigrationHistory.cs">
+    <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
@@ -401,29 +401,29 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Oficina.cs">
+    <Compile Include="Models\Oficina.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="OficinaModel.Context.cs">
+    <Compile Include="Models\OficinaModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>OficinaModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="OficinaModel.cs">
+    <Compile Include="Models\OficinaModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="OficinaModel.Designer.cs">
+    <Compile Include="Models\OficinaModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>OficinaModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="PedidoReparacao.cs">
+    <Compile Include="Models\PedidoReparacao.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RespostaPedido.cs">
+    <Compile Include="Models\RespostaPedido.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
@@ -441,7 +441,7 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="TipoReparacao.cs">
+    <Compile Include="Models\TipoReparacao.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
