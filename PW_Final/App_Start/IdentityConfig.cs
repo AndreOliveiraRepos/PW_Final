@@ -49,7 +49,8 @@ namespace PW_Final
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 3/*,
+                RequiredLength = 3
+                //check this after the site is up and running
                /* RequireNonLetterOrDigit = true,
                 RequireDigit = true,
                 RequireLowercase = true,
