@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 01/08/2017 21:52:59
--- Generated from EDMX file: C:\Users\red_f\Documents\fac\GitRepos\PW\PW_Final\PW_Final\OficinaModel.edmx
+-- Date Created: 01/08/2017 23:23:05
+-- Generated from EDMX file: C:\Users\red_f\Documents\fac\GitRepos\PW\PW_Final\PW_Final\Models\OficinaModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -23,19 +23,34 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[AspNetUserLogins] DROP CONSTRAINT [FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId];
 GO
-IF OBJECT_ID(N'[dbo].[FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AspNetUserRoles] DROP CONSTRAINT [FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId];
+IF OBJECT_ID(N'[dbo].[FK_AspNetUserRoles_AspNetRoles]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AspNetUserRoles] DROP CONSTRAINT [FK_AspNetUserRoles_AspNetRoles];
 GO
-IF OBJECT_ID(N'[dbo].[FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AspNetUserRoles] DROP CONSTRAINT [FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId];
+IF OBJECT_ID(N'[dbo].[FK_AspNetUserRoles_AspNetUsers]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AspNetUserRoles] DROP CONSTRAINT [FK_AspNetUserRoles_AspNetUsers];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TipoReparacaoOficina]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[OficinaSet] DROP CONSTRAINT [FK_TipoReparacaoOficina];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PedidoReparacaoAspNetUsers]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PedidoReparacaoSet] DROP CONSTRAINT [FK_PedidoReparacaoAspNetUsers];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PedidoReparacaoTipoReparacao]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PedidoReparacaoSet] DROP CONSTRAINT [FK_PedidoReparacaoTipoReparacao];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PedidoReparacaoRespostaPedido]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RespostaPedidoSet] DROP CONSTRAINT [FK_PedidoReparacaoRespostaPedido];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RespostaPedidoOficina]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RespostaPedidoSet] DROP CONSTRAINT [FK_RespostaPedidoOficina];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[__MigrationHistory]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[__MigrationHistory];
+IF OBJECT_ID(N'[dbo].[C__MigrationHistory]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[C__MigrationHistory];
 GO
 IF OBJECT_ID(N'[dbo].[AspNetRoles]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AspNetRoles];
@@ -46,11 +61,23 @@ GO
 IF OBJECT_ID(N'[dbo].[AspNetUserLogins]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AspNetUserLogins];
 GO
-IF OBJECT_ID(N'[dbo].[AspNetUserRoles]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[AspNetUserRoles];
-GO
 IF OBJECT_ID(N'[dbo].[AspNetUsers]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AspNetUsers];
+GO
+IF OBJECT_ID(N'[dbo].[OficinaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[OficinaSet];
+GO
+IF OBJECT_ID(N'[dbo].[PedidoReparacaoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PedidoReparacaoSet];
+GO
+IF OBJECT_ID(N'[dbo].[TipoReparacaoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TipoReparacaoSet];
+GO
+IF OBJECT_ID(N'[dbo].[RespostaPedidoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[RespostaPedidoSet];
+GO
+IF OBJECT_ID(N'[dbo].[AspNetUserRoles]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[AspNetUserRoles];
 GO
 
 -- --------------------------------------------------

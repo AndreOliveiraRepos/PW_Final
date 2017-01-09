@@ -7,7 +7,7 @@
       <Diagram DiagramId="cfd74b8959444b16a61c19f3e0760e97" Name="Diagram1" DisplayType="true">
         <EntityTypeShape EntityType="OFICINABDModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OFICINABDModel.AspNetRoles" Width="1.5" PointX="11" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="OFICINABDModel.AspNetUserClaims" Width="1.5" PointX="9.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OFICINABDModel.AspNetUserClaims" Width="1.5" PointX="12.625" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OFICINABDModel.AspNetUserLogins" Width="1.5" PointX="10.375" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="OFICINABDModel.AspNetUsers" Width="1.5" PointX="7.5" PointY="0.625" IsExpanded="true" />
         <AssociationConnector Association="OFICINABDModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />

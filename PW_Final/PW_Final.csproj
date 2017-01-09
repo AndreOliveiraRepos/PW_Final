@@ -204,6 +204,7 @@
       <DependentUpon>OficinaModel.edmx</DependentUpon>
       <LastGenOutput>OficinaModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Reparacao\Reparacoes.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -426,6 +427,13 @@
     <Compile Include="Models\RespostaPedido.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Reparacao\Reparacoes.aspx.cs">
+      <DependentUpon>Reparacoes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reparacao\Reparacoes.aspx.designer.cs">
+      <DependentUpon>Reparacoes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -454,6 +462,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Oficina\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
