@@ -1,0 +1,16 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Dashboard.master.cs" Inherits="PW_Final.Dashboard" %>
+
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <h2>Dashboard</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <asp:ContentPlaceHolder ID="DashMenu" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="col-md-8">
+            <asp:ContentPlaceHolder ID="DashContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+</asp:Content>
+

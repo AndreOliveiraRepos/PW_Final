@@ -7,19 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PW_Final.Admin {
+namespace PW_Final.Cliente {
     
     
-    public partial class ListaTipoOficina {
-        
-        /// <summary>
-        /// tiposGridView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView tiposGridView;
+    public partial class ClientHome {
         
         /// <summary>
         /// homeHL control.
@@ -31,21 +22,12 @@ namespace PW_Final.Admin {
         protected global::System.Web.UI.WebControls.HyperLink homeHL;
         
         /// <summary>
-        /// manageRolesHL control.
+        /// managePedidosHL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink manageRolesHL;
-        
-        /// <summary>
-        /// manageRepairHL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink manageRepairHL;
+        protected global::System.Web.UI.WebControls.HyperLink managePedidosHL;
     }
 }

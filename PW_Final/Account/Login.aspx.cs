@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using PW_Final.Models;
 
+
 namespace PW_Final.Account
 {
     public partial class Login : Page
@@ -38,17 +39,29 @@ namespace PW_Final.Account
                 switch (result)
                 {
                     case SignInStatus.Success:
-                        IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                        //IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                        //ApplicationDbContext db = new ApplicationDbContext();
+                        var db = new Entities();
+                        var currentUser = manager.FindByName(Email.Text);
+                        
+                        var role = manager.GetRoles(currentUser.Id);
+                        
+                        if (role[0] == "Admin")
+                        {
+                            Response.Redirect("/Admin/AdminHome");
+                        }
+                        else if (role[0] == "Cliente")
+                        {
+                            Response.Redirect("/Cliente/ClienteHome");
+                        }
+                        else {
+                            Response.Redirect("/Oficina/OficinaHome");
+                        }
                         break;
                     case SignInStatus.LockedOut:
                         Response.Redirect("/Account/Lockout");
                         break;
-                    case SignInStatus.RequiresVerification:
-                        Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}", 
-                                                        Request.QueryString["ReturnUrl"],
-                                                        RememberMe.Checked),
-                                          true);
-                        break;
+                    
                     case SignInStatus.Failure:
                     default:
                         FailureText.Text = "Invalid login attempt";

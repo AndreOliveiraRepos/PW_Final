@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace PW_Final.Oficina
 {
-    public partial class NovaOficina : System.Web.UI.Page
+    public partial class OficinaHome : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

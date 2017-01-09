@@ -174,12 +174,14 @@
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="Admin\AdicionaTipoReparacoes.aspx" />
     <Content Include="Admin\AdicionaRoles.aspx" />
+    <Content Include="Admin\AdminHome.aspx" />
     <Content Include="Admin\ListaRoles.aspx" />
     <Content Include="Admin\ListaTipoOficina.aspx" />
     <Content Include="App_Data\OFICINABD.mdf" />
     <Content Include="App_Data\OFICINABD_log.ldf">
       <DependentUpon>OFICINABD.mdf</DependentUpon>
     </Content>
+    <Content Include="Cliente\ClienteHome.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -196,6 +198,7 @@
     <Content Include="Models\OficinaModel.edmx.diagram">
       <DependentUpon>OficinaModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Dashboard.Master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Models\OficinaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -208,7 +211,7 @@
       <DependentUpon>OficinaModel.edmx</DependentUpon>
       <LastGenOutput>OficinaModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Oficina\NovaOficina.aspx" />
+    <Content Include="Oficina\OficinaHome.aspx" />
     <Content Include="Reparacao\Reparacoes.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -377,6 +380,13 @@
     <Compile Include="Admin\AdicionaRoles.aspx.designer.cs">
       <DependentUpon>AdicionaRoles.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AdminHome.aspx.cs">
+      <DependentUpon>AdminHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AdminHome.aspx.designer.cs">
+      <DependentUpon>AdminHome.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\ListaRoles.aspx.cs">
       <DependentUpon>ListaRoles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -402,6 +412,20 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Cliente\ClienteHome.aspx.cs">
+      <DependentUpon>ClienteHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente\ClienteHome.aspx.designer.cs">
+      <DependentUpon>ClienteHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard.Master.cs">
+      <DependentUpon>Dashboard.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard.Master.designer.cs">
+      <DependentUpon>Dashboard.Master</DependentUpon>
+    </Compile>
     <Compile Include="Models\AspNetRoles.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
@@ -456,12 +480,12 @@
     <Compile Include="Models\PedidoReparacao.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Oficina\NovaOficina.aspx.cs">
-      <DependentUpon>NovaOficina.aspx</DependentUpon>
+    <Compile Include="Oficina\OficinaHome.aspx.cs">
+      <DependentUpon>OficinaHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Oficina\NovaOficina.aspx.designer.cs">
-      <DependentUpon>NovaOficina.aspx</DependentUpon>
+    <Compile Include="Oficina\OficinaHome.aspx.designer.cs">
+      <DependentUpon>OficinaHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\RespostaPedido.cs">
@@ -503,9 +527,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cliente\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
