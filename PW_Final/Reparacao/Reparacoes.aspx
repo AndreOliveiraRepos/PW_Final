@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Account Confirmation" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Reparacoes.aspx.cs" Inherits="PW_Final.Reparacao.Reparacoes" %>
+﻿<%@ Page Title="Reparações" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Reparacoes.aspx.cs" Inherits="PW_Final.Reparacao.Reparacoes" %>
 
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">

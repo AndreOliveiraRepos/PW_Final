@@ -204,6 +204,8 @@
       <DependentUpon>OficinaModel.edmx</DependentUpon>
       <LastGenOutput>OficinaModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Oficina\NovaOficina.aspx" />
+    <Content Include="Reparacao\InserirTipoReparacao.aspx" />
     <Content Include="Reparacao\Reparacoes.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -423,9 +425,23 @@
     <Compile Include="Models\PedidoReparacao.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Oficina\NovaOficina.aspx.cs">
+      <DependentUpon>NovaOficina.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Oficina\NovaOficina.aspx.designer.cs">
+      <DependentUpon>NovaOficina.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\RespostaPedido.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reparacao\InserirTipoReparacao.aspx.cs">
+      <DependentUpon>InserirTipoReparacao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reparacao\InserirTipoReparacao.aspx.designer.cs">
+      <DependentUpon>InserirTipoReparacao.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reparacao\Reparacoes.aspx.cs">
       <DependentUpon>Reparacoes.aspx</DependentUpon>
@@ -463,9 +479,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Oficina\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
