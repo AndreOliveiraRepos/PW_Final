@@ -37,6 +37,14 @@
             </div>
         </div>
         <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="RoleDropDownList" CssClass="col-md-2 control-label">Tipo de conta</asp:Label>
+            <div class="col-md-10">
+                 <asp:DropDownList ID="RoleDropDownList" CssClass="form-control" runat="server"></asp:DropDownList>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="RoleDropDownList"
+                    CssClass="text-danger" ErrorMessage="Escolha o tipo de conta." />
+            </div>
+        </div>
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-default" />
             </div>

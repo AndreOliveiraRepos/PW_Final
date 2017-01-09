@@ -11,6 +11,16 @@ namespace PW_Final.Account
 {
     public partial class Register : Page
     {
+        //private ApplicationDbContext db = new ApplicationDbContext();
+        private Entities db = new Entities();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            foreach (var t in db.AspNetRoles)
+            {
+                RoleDropDownList.Items.Add(t.Name);
+            }
+        }
+
         protected void CreateUser_Click(object sender, EventArgs e)
         {
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
@@ -23,6 +33,9 @@ namespace PW_Final.Account
                 //string code = manager.GenerateEmailConfirmationToken(user.Id);
                 //string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
                 //manager.SendEmail(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
+                var currentUser = manager.FindByName(user.UserName);
+
+                var roleresult = manager.AddToRole(currentUser.Id, RoleDropDownList.SelectedItem.Text);
 
                 signInManager.SignIn( user, isPersistent: false, rememberBrowser: false);
                 IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
