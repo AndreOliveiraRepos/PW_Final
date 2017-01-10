@@ -182,6 +182,8 @@
       <DependentUpon>OFICINABD.mdf</DependentUpon>
     </Content>
     <Content Include="Cliente\ClienteHome.aspx" />
+    <Content Include="Cliente\NovoPedido.aspx" />
+    <Content Include="Cliente\Pedidos.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -247,7 +249,9 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
@@ -418,6 +422,20 @@
     </Compile>
     <Compile Include="Cliente\ClienteHome.aspx.designer.cs">
       <DependentUpon>ClienteHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\NovoPedido.aspx.cs">
+      <DependentUpon>NovoPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente\NovoPedido.aspx.designer.cs">
+      <DependentUpon>NovoPedido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\Pedidos.aspx.cs">
+      <DependentUpon>Pedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente\Pedidos.aspx.designer.cs">
+      <DependentUpon>Pedidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.Master.cs">
       <DependentUpon>Dashboard.Master</DependentUpon>
