@@ -11,9 +11,11 @@ namespace PW_Final.Cliente
 {
     public partial class NovoPedido : System.Web.UI.Page
     {
-        private Entities db = new Entities();
+        private EntitiesConnection db = new EntitiesConnection();
+        private Client client;
         protected void Page_Load(object sender, EventArgs e)
         {
+            client = Client.Instance;
             foreach (var t in db.TipoReparacaoSet)
             {
                 tipoDropDownList.Items.Add(t.Descricao);
@@ -23,22 +25,8 @@ namespace PW_Final.Cliente
 
         protected void AddNew(object sender, EventArgs e)
         {
-            var tipo = (from t in db.TipoReparacaoSet
-                        where t.Descricao.Equals(tipoDropDownList.Text)
-                        select t
-                        ).FirstOrDefault();
-            var today = DateTime.Now.Date;
-
-            var result = db.PedidoReparacaoSet.Add(new PedidoReparacao()
-            {
-                DescricaoAvaria = Descricao.Text,
-                DataPedido = today,
-                Avaliacao = 0,
-                AspNetUsersId = User.Identity.GetUserId(),
-                TipoReparacaoId = tipo.Id
-
-            });
-            db.SaveChanges();
+            
+            client.NovoPedido(tipoDropDownList.Text, Descricao.Text);
             successPanel.Visible = true;
             if (ErrorMessage.Visible)
                 ErrorMessage.Visible = false;

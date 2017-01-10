@@ -7,10 +7,55 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PW_Final.Account {
+namespace PW_Final.Oficina {
     
     
-    public partial class Register {
+    public partial class ProcurarPedidos {
+        
+        /// <summary>
+        /// homeHL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink homeHL;
+        
+        /// <summary>
+        /// searchRequestsHL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink searchRequestsHL;
+        
+        /// <summary>
+        /// manageAnswersHL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink manageAnswersHL;
+        
+        /// <summary>
+        /// pedidosGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView pedidosGridView;
+        
+        /// <summary>
+        /// respostaPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel respostaPanel;
         
         /// <summary>
         /// ErrorMessage control.
@@ -19,96 +64,33 @@ namespace PW_Final.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ErrorMessage;
+        protected global::System.Web.UI.WebControls.PlaceHolder ErrorMessage;
         
         /// <summary>
-        /// RoleDropDownList control.
+        /// FailureText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList RoleDropDownList;
+        protected global::System.Web.UI.WebControls.Literal FailureText;
         
         /// <summary>
-        /// commonPanel control.
+        /// successPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel commonPanel;
+        protected global::System.Web.UI.WebControls.PlaceHolder successPanel;
         
         /// <summary>
-        /// Email control.
+        /// Valor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Email;
-        
-        /// <summary>
-        /// Password control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Password;
-        
-        /// <summary>
-        /// ConfirmPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ConfirmPassword;
-        
-        /// <summary>
-        /// oficinaPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel oficinaPanel;
-        
-        /// <summary>
-        /// NomeOficina control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox NomeOficina;
-        
-        /// <summary>
-        /// MoradaOficina control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox MoradaOficina;
-        
-        /// <summary>
-        /// TelefoneOficina control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TelefoneOficina;
-        
-        /// <summary>
-        /// tipoDropDownList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList tipoDropDownList;
+        protected global::System.Web.UI.WebControls.TextBox Valor;
     }
 }

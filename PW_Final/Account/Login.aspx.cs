@@ -41,7 +41,7 @@ namespace PW_Final.Account
                     case SignInStatus.Success:
                         //IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                         //ApplicationDbContext db = new ApplicationDbContext();
-                        var db = new Entities();
+                        var db = new EntitiesConnection();
                         var currentUser = manager.FindByName(Email.Text);
                         
                         var role = manager.GetRoles(currentUser.Id);

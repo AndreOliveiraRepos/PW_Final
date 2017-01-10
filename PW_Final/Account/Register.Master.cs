@@ -5,14 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace PW_Final.Cliente
+namespace PW_Final.Account
 {
-    public partial class ClientHome : System.Web.UI.Page
+    public partial class Register1 : System.Web.UI.MasterPage
     {
-        private Client client;
         protected void Page_Load(object sender, EventArgs e)
         {
-            client = Client.Instance;
+
         }
     }
 }

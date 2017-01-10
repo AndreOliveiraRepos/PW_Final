@@ -10,7 +10,7 @@ namespace PW_Final.Admin
 {
     public partial class ListaRoles : System.Web.UI.Page
     {
-        private Entities db = new Entities();
+        private EntitiesConnection db = new EntitiesConnection();
         protected void Page_Load(object sender, EventArgs e)
         {
             fillData();

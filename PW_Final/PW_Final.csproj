@@ -193,6 +193,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
+    <Content Include="Dashboard.Master" />
+    <Content Include="Account\Register.Master" />
     <EntityDeploy Include="Models\OficinaModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>OficinaModel.Designer.cs</LastGenOutput>
@@ -200,20 +202,19 @@
     <Content Include="Models\OficinaModel.edmx.diagram">
       <DependentUpon>OficinaModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Dashboard.Master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Models\OficinaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>OficinaModel.edmx</DependentUpon>
       <LastGenOutput>OficinaModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\OficinaModel.edmx.sql" />
     <Content Include="Models\OficinaModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>OficinaModel.edmx</DependentUpon>
       <LastGenOutput>OficinaModel.cs</LastGenOutput>
     </Content>
     <Content Include="Oficina\OficinaHome.aspx" />
+    <Content Include="Oficina\ProcurarPedidos.aspx" />
     <Content Include="Reparacao\Reparacoes.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -335,6 +336,13 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\Register.Master.cs">
+      <DependentUpon>Register.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.Master.designer.cs">
+      <DependentUpon>Register.Master</DependentUpon>
+    </Compile>
     <Compile Include="Account\RegisterExternalLogin.aspx.cs">
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -416,6 +424,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Cliente\Client.cs" />
     <Compile Include="Cliente\ClienteHome.aspx.cs">
       <DependentUpon>ClienteHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -444,6 +453,23 @@
     <Compile Include="Dashboard.Master.designer.cs">
       <DependentUpon>Dashboard.Master</DependentUpon>
     </Compile>
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Models\AspNetRoles.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
@@ -456,30 +482,10 @@
     <Compile Include="Models\AspNetUsers.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Oficina.cs">
-      <DependentUpon>OficinaModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\OficinaModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -495,7 +501,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OficinaModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\PedidoReparacao.cs">
+    <Compile Include="Models\OficinaSet.cs">
+      <DependentUpon>OficinaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PedidoReparacaoSet.cs">
+      <DependentUpon>OficinaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RespostaPedidoSet.cs">
+      <DependentUpon>OficinaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TipoReparacaoSet.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Oficina\OficinaHome.aspx.cs">
@@ -505,10 +520,15 @@
     <Compile Include="Oficina\OficinaHome.aspx.designer.cs">
       <DependentUpon>OficinaHome.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\RespostaPedido.cs">
-      <DependentUpon>OficinaModel.tt</DependentUpon>
+    <Compile Include="Oficina\ProcurarPedidos.aspx.cs">
+      <DependentUpon>ProcurarPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Oficina\ProcurarPedidos.aspx.designer.cs">
+      <DependentUpon>ProcurarPedidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Oficina\RepairShop.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reparacao\Reparacoes.aspx.cs">
       <DependentUpon>Reparacoes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -531,9 +551,6 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="Models\TipoReparacao.cs">
-      <DependentUpon>OficinaModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

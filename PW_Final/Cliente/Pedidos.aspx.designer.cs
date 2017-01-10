@@ -31,6 +31,15 @@ namespace PW_Final.Cliente {
         protected global::System.Web.UI.WebControls.HyperLink managePedidosHL;
         
         /// <summary>
+        /// pedidosPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pedidosPanel;
+        
+        /// <summary>
         /// pedidosGridView control.
         /// </summary>
         /// <remarks>
@@ -38,5 +47,23 @@ namespace PW_Final.Cliente {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView pedidosGridView;
+        
+        /// <summary>
+        /// respostasPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel respostasPanel;
+        
+        /// <summary>
+        /// respostasGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView respostasGridView;
     }
 }

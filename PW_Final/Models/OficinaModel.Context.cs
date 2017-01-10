@@ -13,10 +13,10 @@ namespace PW_Final.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class EntitiesConnection : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public EntitiesConnection()
+            : base("name=EntitiesConnection")
         {
         }
     
@@ -25,14 +25,14 @@ namespace PW_Final.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<Oficina> OficinaSet { get; set; }
-        public virtual DbSet<PedidoReparacao> PedidoReparacaoSet { get; set; }
-        public virtual DbSet<TipoReparacao> TipoReparacaoSet { get; set; }
-        public virtual DbSet<RespostaPedido> RespostaPedidoSet { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<OficinaSet> OficinaSet { get; set; }
+        public virtual DbSet<PedidoReparacaoSet> PedidoReparacaoSet { get; set; }
+        public virtual DbSet<RespostaPedidoSet> RespostaPedidoSet { get; set; }
+        public virtual DbSet<TipoReparacaoSet> TipoReparacaoSet { get; set; }
     }
 }

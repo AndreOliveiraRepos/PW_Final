@@ -2,8 +2,9 @@
 
 <asp:Content runat="server" ID="Menu" ContentPlaceHolderID="DashMenu">
 
-                <asp:HyperLink ID="manageRolesHL" CssClass="list-group-item" runat="server" NavigateUrl="~/Admin/ListaRoles.aspx">Gerir Roles</asp:HyperLink>
-                <asp:HyperLink ID="manageRepaorHL" CssClass="list-group-item" runat="server" NavigateUrl="~/Admin/ListaTipoOficina.aspx">Gerir Tipos Reparação</asp:HyperLink>
+                <asp:HyperLink ID="homeHL" CssClass="list-group-item active" runat="server" NavigateUrl="~/Oficina/OficinaHome">Home</asp:HyperLink>
+                <asp:HyperLink ID="searchRequestsHL" CssClass="list-group-item" runat="server" NavigateUrl="~/Oficina/ProcurarPedidos.aspx">Procurar Pedidos</asp:HyperLink>
+                <asp:HyperLink ID="manageAnswersHL" CssClass="list-group-item" runat="server" NavigateUrl="~/Oficina/Respostas.aspx">Listar as minhas respostas</asp:HyperLink>
                             
 </asp:Content>
 

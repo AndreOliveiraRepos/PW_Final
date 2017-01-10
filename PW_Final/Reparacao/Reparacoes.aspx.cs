@@ -11,7 +11,7 @@ namespace PW_Final.Reparacao
 
     public partial class Reparacoes : System.Web.UI.Page
     {
-        private Entities db = new Entities();
+        private EntitiesConnection db = new EntitiesConnection();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Page.IsPostBack){
@@ -23,7 +23,7 @@ namespace PW_Final.Reparacao
         {
             this.pendingGridView.DataSource = db.PedidoReparacaoSet.Select(pedido => new
             {
-                Tipo = pedido.TipoReparacao,
+                Tipo = pedido.TipoReparacaoSet,
                 DataPedido = pedido.DataPedido
                 
 

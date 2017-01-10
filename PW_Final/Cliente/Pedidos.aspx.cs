@@ -11,33 +11,20 @@ namespace PW_Final.Cliente
 {
     public partial class Pedidos : System.Web.UI.Page
     {
-        private Entities db = new Entities();
+        private EntitiesConnection db = new EntitiesConnection();
+        private Client client;
         protected void Page_Load(object sender, EventArgs e)
         {
+            client = Client.Instance;
             fillData();
         }
 
         public void fillData()
         {
-            var currentUser = User.Identity.GetUserId();
-
+            this.pedidosGridView.DataSource = client.myPedidos();
            
-
-            this.pedidosGridView.DataSource = (from p in db.PedidoReparacaoSet
-                                          where p.AspNetUsersId == currentUser
-                                          select new
-                                          {
-                                              idPedido = p.Id,
-                                              Descricao = p.DescricaoAvaria,
-                                              Data = p.DataPedido,
-                                              Avaliacao = p.Avaliacao,
-                                              Tipo = p.TipoReparacao.Descricao,
-                                              Respostas = p.RespostaPedido.Count
-
-                                          }).ToList();
-           
-            
             pedidosGridView.DataBind();
+            
 
         }
         protected void AddNew(object sender, EventArgs e)
@@ -48,14 +35,27 @@ namespace PW_Final.Cliente
         {
             HiddenField hd = (HiddenField)((LinkButton)sender).FindControl("idPedido");
             int i = Convert.ToInt32(hd.Value);
-            PedidoReparacao pedido = db.PedidoReparacaoSet.Single(p => p.Id.Equals(i));
-            db.PedidoReparacaoSet.Remove(pedido);
-            db.SaveChanges();
+            client.EliminaPedido(i);
             fillData();
             
         }
         protected void Respostas(object sender, EventArgs e)
         {
+            HiddenField hd = (HiddenField)((LinkButton)sender).FindControl("idPedido");
+            int i = Convert.ToInt32(hd.Value);
+            respostasGridView.DataSource = client.myRespostas(i);
+            respostasGridView.DataBind();
+            respostasPanel.Visible = true;
         }
+        protected void AceitaResposta(object sender, EventArgs e) {
+            HiddenField hd = (HiddenField)((LinkButton)sender).FindControl("idPedido");
+            int ip = Convert.ToInt32(hd.Value);
+            hd = (HiddenField)((LinkButton)sender).FindControl("idResposta");
+            int ir = Convert.ToInt32(hd.Value);
+            client.AceitaResposta(ip, ir);
+            respostasGridView.DataSource = client.myRespostas(ip);
+            respostasGridView.DataBind();
+        }
+        
     }
 }

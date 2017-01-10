@@ -12,21 +12,21 @@ namespace PW_Final.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TipoReparacao
+    public partial class TipoReparacaoSet
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TipoReparacao()
+        public TipoReparacaoSet()
         {
-            this.Oficina = new HashSet<Oficina>();
-            this.PedidoReparacao = new HashSet<PedidoReparacao>();
+            this.OficinaSet = new HashSet<OficinaSet>();
+            this.PedidoReparacaoSet = new HashSet<PedidoReparacaoSet>();
         }
     
         public int Id { get; set; }
         public string Descricao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Oficina> Oficina { get; set; }
+        public virtual ICollection<OficinaSet> OficinaSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PedidoReparacao> PedidoReparacao { get; set; }
+        public virtual ICollection<PedidoReparacaoSet> PedidoReparacaoSet { get; set; }
     }
 }

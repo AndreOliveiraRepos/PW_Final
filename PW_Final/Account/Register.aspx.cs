@@ -12,12 +12,20 @@ namespace PW_Final.Account
     public partial class Register : Page
     {
         //private ApplicationDbContext db = new ApplicationDbContext();
-        private Entities db = new Entities();
+        private EntitiesConnection db = new EntitiesConnection();
         protected void Page_Load(object sender, EventArgs e)
         {
-            foreach (var t in db.AspNetRoles)
-            {
-                RoleDropDownList.Items.Add(t.Name);
+            if (!IsPostBack) {
+                RoleDropDownList.Items.Add("Escolha o seu tipo de conta");
+                foreach (var t in db.AspNetRoles)
+                {
+                    RoleDropDownList.Items.Add(t.Name);
+                }
+                tipoDropDownList.Items.Add("Escolha o tipo de Reparações");
+                foreach (var t in db.TipoReparacaoSet)
+                {
+                    tipoDropDownList.Items.Add(t.Descricao);
+                }
             }
         }
 
@@ -37,13 +45,42 @@ namespace PW_Final.Account
                 var currentUser = manager.FindByName(user.UserName);
 
                 var roleresult = manager.AddToRole(currentUser.Id, RoleDropDownList.SelectedItem.Text);
-
+                if (RoleDropDownList.SelectedItem.Text == "Oficina") {
+                    var tipo = (from t in db.TipoReparacaoSet
+                                where t.Descricao.Equals(tipoDropDownList.Text)
+                                select t
+                        ).FirstOrDefault();
+                    db.OficinaSet.Add(new Models.OficinaSet
+                    {
+                        Nome = NomeOficina.Text,
+                        Morada = MoradaOficina.Text,
+                        Telefone = TelefoneOficina.Text,
+                        TipoReparacaoId = tipo.Id,
+                        Avaliacao = 0,
+                        AspNetUsers_Id = currentUser.Id
+                    });
+                    db.SaveChanges();
+                }
                 signInManager.SignIn( user, isPersistent: false, rememberBrowser: false);
                 IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
             }
             else 
             {
                 ErrorMessage.Text = result.Errors.FirstOrDefault();
+            }
+        }
+
+        
+        protected void ChangeForm(object sender, EventArgs e)  {
+            if (RoleDropDownList.SelectedItem.Text != "Oficina" && RoleDropDownList.SelectedIndex > 0) {
+                commonPanel.Visible = true;
+                if (oficinaPanel.Visible) {
+                    oficinaPanel.Visible = false;
+                }
+            } else if (RoleDropDownList.SelectedItem.Text == "Oficina") {
+                commonPanel.Visible = true;
+                oficinaPanel.Visible = true;
+                
             }
         }
     }

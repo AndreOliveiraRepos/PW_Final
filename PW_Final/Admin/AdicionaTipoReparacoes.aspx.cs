@@ -10,7 +10,7 @@ namespace PW_Final.Admin
 {
     public partial class AdicionaReparacoes : System.Web.UI.Page
     {
-        private Entities db = new Entities();
+        private EntitiesConnection db = new EntitiesConnection();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -24,7 +24,7 @@ namespace PW_Final.Admin
             var val = db.TipoReparacaoSet.Where(t=> t.Descricao == tipo);
             if (val.Count() == 0)
             {
-                db.TipoReparacaoSet.Add(new TipoReparacao()
+                db.TipoReparacaoSet.Add(new TipoReparacaoSet()
                 {
                     Descricao = tipo
                 });

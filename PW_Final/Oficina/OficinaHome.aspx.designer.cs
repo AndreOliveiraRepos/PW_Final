@@ -13,21 +13,30 @@ namespace PW_Final.Oficina {
     public partial class OficinaHome {
         
         /// <summary>
-        /// manageRolesHL control.
+        /// homeHL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink manageRolesHL;
+        protected global::System.Web.UI.WebControls.HyperLink homeHL;
         
         /// <summary>
-        /// manageRepaorHL control.
+        /// searchRequestsHL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink manageRepaorHL;
+        protected global::System.Web.UI.WebControls.HyperLink searchRequestsHL;
+        
+        /// <summary>
+        /// manageAnswersHL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink manageAnswersHL;
     }
 }
