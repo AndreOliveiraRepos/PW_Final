@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
+using PW_Final.Controladores;
 
 namespace PW_Final.Cliente
 {
@@ -21,7 +22,7 @@ namespace PW_Final.Cliente
 
         public void fillData()
         {
-            this.pedidosGridView.DataSource = client.myPedidos();
+            this.pedidosGridView.DataSource = client.MeusPedidos();
            
             pedidosGridView.DataBind();
             
@@ -43,7 +44,7 @@ namespace PW_Final.Cliente
         {
             HiddenField hd = (HiddenField)((LinkButton)sender).FindControl("idPedido");
             int i = Convert.ToInt32(hd.Value);
-            respostasGridView.DataSource = client.myRespostas(i);
+            respostasGridView.DataSource = client.ListarRespostasServico(i);
             respostasGridView.DataBind();
             respostasPanel.Visible = true;
         }
@@ -52,8 +53,8 @@ namespace PW_Final.Cliente
             int ip = Convert.ToInt32(hd.Value);
             hd = (HiddenField)((LinkButton)sender).FindControl("idResposta");
             int ir = Convert.ToInt32(hd.Value);
-            client.AceitaResposta(ip, ir);
-            respostasGridView.DataSource = client.myRespostas(ip);
+            /*client.AceitaResposta(ip, ir);
+            respostasGridView.DataSource = client.myRespostas(ip);*/
             respostasGridView.DataBind();
         }
         

@@ -29,10 +29,12 @@ namespace PW_Final.Models
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<AvaliacaoClienteSet> AvaliacaoClienteSet { get; set; }
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<OficinaSet> OficinaSet { get; set; }
-        public virtual DbSet<PedidoReparacaoSet> PedidoReparacaoSet { get; set; }
-        public virtual DbSet<RespostaPedidoSet> RespostaPedidoSet { get; set; }
+        public virtual DbSet<OrcamentoSet> OrcamentoSet { get; set; }
+        public virtual DbSet<RelatorioServicoSet> RelatorioServicoSet { get; set; }
+        public virtual DbSet<ServicoSet> ServicoSet { get; set; }
         public virtual DbSet<TipoReparacaoSet> TipoReparacaoSet { get; set; }
     }
 }

@@ -3,7 +3,7 @@
 
 <asp:Content runat="server" ID="Menu" ContentPlaceHolderID="DashMenu">
 
-                <asp:HyperLink ID="homeHL" CssClass="list-group-item" runat="server" NavigateUrl="~/Cliente/ClienteHome">Home</asp:HyperLink>
+                <asp:HyperLink ID="homeHL" CssClass="list-group-item" runat="server" NavigateUrl="~/Cliente/ClienteHome.aspx">Home</asp:HyperLink>
                 <asp:HyperLink ID="managePedidosHL" CssClass="list-group-item active" runat="server" NavigateUrl="~/Cliente/Pedidos">Gerir Meus Pedidos</asp:HyperLink>
                 
                  <div class="col-md-2">
@@ -22,12 +22,10 @@
                     
                     
                     <asp:BoundField DataField="Descricao" HeaderText="Descrição" />
-                    <asp:BoundField DataField="Data" HeaderText="Data" />
-                    <asp:BoundField DataField="Avaliacao" HeaderText="Avaliação" />
+                    <asp:BoundField DataField="Data" HeaderText="Data" />                    
                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
-                    <asp:BoundField DataField="Respostas" HeaderText="Respostas" />
-                    <asp:BoundField DataField="Estado" HeaderText="Estado" />
-                    
+                    <asp:BoundField DataField="Orcamentos" HeaderText="Orçamentos" />
+                    <asp:BoundField DataField="Estado" HeaderText="Estado" />                    
                    <asp:TemplateField HeaderText="Opções">
                         <ItemTemplate>
                             <asp:LinkButton runat="server" Text="Remover" OnClick="Delete" CssClass="btn btn-default" />

@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNet.Identity;
+using PW_Final.Controladores;
 using PW_Final.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ namespace PW_Final.Oficina
     {
         private EntitiesConnection db = new EntitiesConnection();
         private RepairShop shop;
+        private Service service;
+        private Budget budget;
         private static Int32 aux;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,7 +26,8 @@ namespace PW_Final.Oficina
         public void fillData()
         {
            
-            pedidosGridView.DataSource = shop.myPedidos();
+            pedidosGridView.DataSource = shop.TodosOsPedidos();
+
             pedidosGridView.DataBind();
 
         }

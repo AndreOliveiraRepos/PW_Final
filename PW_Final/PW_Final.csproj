@@ -413,6 +413,9 @@
     <Compile Include="Admin\ListaTipoOficina.aspx.designer.cs">
       <DependentUpon>ListaTipoOficina.aspx</DependentUpon>
     </Compile>
+    <Content Include="Controladores\ServiceReport.cs" />
+    <Content Include="Controladores\ClientReview.cs" />
+    <Content Include="Controladores\RepairType.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -424,7 +427,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Cliente\Client.cs" />
+    <Compile Include="Controladores\Budget.cs" />
+    <Compile Include="Controladores\Client.cs" />
     <Compile Include="Cliente\ClienteHome.aspx.cs">
       <DependentUpon>ClienteHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -446,6 +450,7 @@
     <Compile Include="Cliente\Pedidos.aspx.designer.cs">
       <DependentUpon>Pedidos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controladores\Service.cs" />
     <Compile Include="Dashboard.Master.cs">
       <DependentUpon>Dashboard.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -482,6 +487,9 @@
     <Compile Include="Models\AspNetUsers.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AvaliacaoClienteSet.cs">
+      <DependentUpon>OficinaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
@@ -504,10 +512,13 @@
     <Compile Include="Models\OficinaSet.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PedidoReparacaoSet.cs">
+    <Compile Include="Models\OrcamentoSet.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RespostaPedidoSet.cs">
+    <Compile Include="Models\RelatorioServicoSet.cs">
+      <DependentUpon>OficinaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServicoSet.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoReparacaoSet.cs">
@@ -527,7 +538,7 @@
     <Compile Include="Oficina\ProcurarPedidos.aspx.designer.cs">
       <DependentUpon>ProcurarPedidos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Oficina\RepairShop.cs" />
+    <Compile Include="Controladores\RepairShop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reparacao\Reparacoes.aspx.cs">
       <DependentUpon>Reparacoes.aspx</DependentUpon>

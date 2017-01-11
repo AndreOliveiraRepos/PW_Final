@@ -4,24 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="66e8baf7707048658a1ef7d80e0d3e12" Name="Diagram1">
-        <EntityTypeShape EntityType="OFICINABDModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="OFICINABDModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="OFICINABDModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OFICINABDModel.AspNetUsers" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+      <Diagram DiagramId="0d43ddfd861247068f8caeca41629371" Name="Diagram1">
+        <EntityTypeShape EntityType="OFICINABDModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OFICINABDModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OFICINABDModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OFICINABDModel.AspNetUsers" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OFICINABDModel.AvaliacaoClienteSet" Width="1.5" PointX="8.25" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="OFICINABDModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OFICINABDModel.OficinaSet" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OFICINABDModel.PedidoReparacaoSet" Width="1.5" PointX="8.25" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="OFICINABDModel.RespostaPedidoSet" Width="1.5" PointX="10.5" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="OFICINABDModel.TipoReparacaoSet" Width="1.5" PointX="6" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OFICINABDModel.OficinaSet" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OFICINABDModel.OrcamentoSet" Width="1.5" PointX="10.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OFICINABDModel.RelatorioServicoSet" Width="1.5" PointX="10.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OFICINABDModel.ServicoSet" Width="1.5" PointX="8.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OFICINABDModel.TipoReparacaoSet" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
         <AssociationConnector Association="OFICINABDModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="OFICINABDModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="OFICINABDModel.FK_AvaliacaoClienteAspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="OFICINABDModel.FK_OficinaAspNetUsers" ManuallyRouted="false" />
-        <AssociationConnector Association="OFICINABDModel.FK_PedidoReparacaoAspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="OFICINABDModel.FK_ServicoAspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="OFICINABDModel.FK_AvaliacaoClienteOficinaSet" ManuallyRouted="false" />
+        <AssociationConnector Association="OFICINABDModel.FK_AvaliacaoClienteServicoSet" ManuallyRouted="false" />
+        <AssociationConnector Association="OFICINABDModel.FK_RelatorioServicoOficinaSet" ManuallyRouted="false" />
         <AssociationConnector Association="OFICINABDModel.FK_RespostaPedidoOficina" ManuallyRouted="false" />
         <AssociationConnector Association="OFICINABDModel.FK_TipoReparacaoOficina" ManuallyRouted="false" />
-        <AssociationConnector Association="OFICINABDModel.FK_PedidoReparacaoRespostaPedido" ManuallyRouted="false" />
-        <AssociationConnector Association="OFICINABDModel.FK_PedidoReparacaoTipoReparacao" ManuallyRouted="false" />
+        <AssociationConnector Association="OFICINABDModel.FK_OrcamentoSetServicoSet" ManuallyRouted="false" />
+        <AssociationConnector Association="OFICINABDModel.FK_RelatorioServicoServicoSet" ManuallyRouted="false" />
+        <AssociationConnector Association="OFICINABDModel.FK_ServicoTipoReparacao" ManuallyRouted="false" />
         <AssociationConnector Association="OFICINABDModel.AspNetUserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

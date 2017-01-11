@@ -22,11 +22,10 @@
                     
                     
                     <asp:BoundField DataField="Descricao" HeaderText="Descrição" />
-                    <asp:BoundField DataField="Data" HeaderText="Data" />
-                    <asp:BoundField DataField="Avaliacao" HeaderText="Avaliação" />
+                    <asp:BoundField DataField="Data" HeaderText="Data" />                    
                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
-                    <asp:BoundField DataField="Respostas" HeaderText="Respostas" />
-                    <asp:BoundField DataField="Estado" HeaderText="Estado" />
+                    <asp:BoundField DataField="Orcamentos" HeaderText="Orçamentos" />
+                    <asp:BoundField DataField="Estado" HeaderText="Estado" />     
                     
                    <asp:TemplateField HeaderText="Opções">
                         <ItemTemplate>

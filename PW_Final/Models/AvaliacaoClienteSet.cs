@@ -12,15 +12,17 @@ namespace PW_Final.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class RespostaPedidoSet
+    public partial class AvaliacaoClienteSet
     {
         public int Id { get; set; }
-        public double Valor { get; set; }
-        public bool Aceite { get; set; }
-        public int PedidoReparacaoId { get; set; }
-        public int Oficina_Id { get; set; }
+        public int OficinaSetId { get; set; }
+        public string AspNetUsersId { get; set; }
+        public int ServicoSetId { get; set; }
+        public int Avaliacao { get; set; }
+        public string Comentario { get; set; }
     
+        public virtual AspNetUsers AspNetUsers { get; set; }
         public virtual OficinaSet OficinaSet { get; set; }
-        public virtual PedidoReparacaoSet PedidoReparacaoSet { get; set; }
+        public virtual ServicoSet ServicoSet { get; set; }
     }
 }

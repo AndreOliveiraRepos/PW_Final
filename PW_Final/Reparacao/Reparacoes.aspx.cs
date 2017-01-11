@@ -21,14 +21,14 @@ namespace PW_Final.Reparacao
 
         private void fillData()
         {
-            this.pendingGridView.DataSource = db.PedidoReparacaoSet.Select(pedido => new
+           /* this.pendingGridView.DataSource = db.PedidoReparacaoSet.Select(pedido => new
             {
                 Tipo = pedido.TipoReparacaoSet,
                 DataPedido = pedido.DataPedido
                 
 
             }).ToList();
-            this.pendingGridView.DataBind();
+            this.pendingGridView.DataBind();*/
         }
     }
 }

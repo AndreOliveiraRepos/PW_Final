@@ -18,7 +18,7 @@ namespace PW_Final.Models
         public TipoReparacaoSet()
         {
             this.OficinaSet = new HashSet<OficinaSet>();
-            this.PedidoReparacaoSet = new HashSet<PedidoReparacaoSet>();
+            this.ServicoSet = new HashSet<ServicoSet>();
         }
     
         public int Id { get; set; }
@@ -27,6 +27,6 @@ namespace PW_Final.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OficinaSet> OficinaSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PedidoReparacaoSet> PedidoReparacaoSet { get; set; }
+        public virtual ICollection<ServicoSet> ServicoSet { get; set; }
     }
 }

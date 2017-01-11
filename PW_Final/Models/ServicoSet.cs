@@ -12,25 +12,30 @@ namespace PW_Final.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PedidoReparacaoSet
+    public partial class ServicoSet
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PedidoReparacaoSet()
+        public ServicoSet()
         {
-            this.RespostaPedidoSet = new HashSet<RespostaPedidoSet>();
+            this.AvaliacaoClienteSet = new HashSet<AvaliacaoClienteSet>();
+            this.OrcamentoSet = new HashSet<OrcamentoSet>();
+            this.RelatorioServicoSet = new HashSet<RelatorioServicoSet>();
         }
     
         public int Id { get; set; }
         public string DescricaoAvaria { get; set; }
         public System.DateTime DataPedido { get; set; }
-        public short Avaliacao { get; set; }
         public string AspNetUsersId { get; set; }
         public int TipoReparacaoId { get; set; }
         public string Estado { get; set; }
     
         public virtual AspNetUsers AspNetUsers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RespostaPedidoSet> RespostaPedidoSet { get; set; }
+        public virtual ICollection<AvaliacaoClienteSet> AvaliacaoClienteSet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrcamentoSet> OrcamentoSet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RelatorioServicoSet> RelatorioServicoSet { get; set; }
         public virtual TipoReparacaoSet TipoReparacaoSet { get; set; }
     }
 }

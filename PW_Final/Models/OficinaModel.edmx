@@ -56,6 +56,17 @@
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
+        <EntityType Name="AvaliacaoClienteSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OficinaSetId" Type="int" Nullable="false" />
+          <Property Name="AspNetUsersId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ServicoSetId" Type="int" Nullable="false" />
+          <Property Name="Avaliacao" Type="int" Nullable="false" />
+          <Property Name="Comentario" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -79,27 +90,35 @@
           <Property Name="AspNetUsers_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="TotalAvaliacao" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="PedidoReparacaoSet">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DescricaoAvaria" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="DataPedido" Type="datetime" Nullable="false" />
-          <Property Name="Avaliacao" Type="smallint" Nullable="false" />
-          <Property Name="AspNetUsersId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="TipoReparacaoId" Type="int" Nullable="false" />
-          <Property Name="Estado" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RespostaPedidoSet">
+        <EntityType Name="OrcamentoSet">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Valor" Type="float" Nullable="false" />
           <Property Name="Aceite" Type="bit" Nullable="false" />
-          <Property Name="PedidoReparacaoId" Type="int" Nullable="false" />
           <Property Name="Oficina_Id" Type="int" Nullable="false" />
+          <Property Name="ServicoSetId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RelatorioServicoSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OficinaSetId" Type="int" Nullable="false" />
+          <Property Name="ServicoSet_Id" Type="int" Nullable="false" />
+          <Property Name="DescricaoServico" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServicoSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescricaoAvaria" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DataPedido" Type="datetime" Nullable="false" />
+          <Property Name="AspNetUsersId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="TipoReparacaoId" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="TipoReparacaoSet">
           <Key>
@@ -129,6 +148,42 @@
             </Principal>
             <Dependent Role="AspNetUserRoles">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AvaliacaoClienteAspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AvaliacaoClienteSet" Type="Self.AvaliacaoClienteSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AvaliacaoClienteSet">
+              <PropertyRef Name="AspNetUsersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AvaliacaoClienteOficinaSet">
+          <End Role="OficinaSet" Type="Self.OficinaSet" Multiplicity="1" />
+          <End Role="AvaliacaoClienteSet" Type="Self.AvaliacaoClienteSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OficinaSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AvaliacaoClienteSet">
+              <PropertyRef Name="OficinaSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AvaliacaoClienteServicoSet">
+          <End Role="ServicoSet" Type="Self.ServicoSet" Multiplicity="1" />
+          <End Role="AvaliacaoClienteSet" Type="Self.AvaliacaoClienteSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServicoSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AvaliacaoClienteSet">
+              <PropertyRef Name="ServicoSetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -172,51 +227,75 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PedidoReparacaoAspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-          <End Role="PedidoReparacaoSet" Type="Self.PedidoReparacaoSet" Multiplicity="*" />
+        <Association Name="FK_OrcamentoSetServicoSet">
+          <End Role="ServicoSet" Type="Self.ServicoSet" Multiplicity="1" />
+          <End Role="OrcamentoSet" Type="Self.OrcamentoSet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
+            <Principal Role="ServicoSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PedidoReparacaoSet">
-              <PropertyRef Name="AspNetUsersId" />
+            <Dependent Role="OrcamentoSet">
+              <PropertyRef Name="ServicoSetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PedidoReparacaoRespostaPedido">
-          <End Role="PedidoReparacaoSet" Type="Self.PedidoReparacaoSet" Multiplicity="1" />
-          <End Role="RespostaPedidoSet" Type="Self.RespostaPedidoSet" Multiplicity="*" />
+        <Association Name="FK_RelatorioServicoOficinaSet">
+          <End Role="OficinaSet" Type="Self.OficinaSet" Multiplicity="1" />
+          <End Role="RelatorioServicoSet" Type="Self.RelatorioServicoSet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PedidoReparacaoSet">
+            <Principal Role="OficinaSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="RespostaPedidoSet">
-              <PropertyRef Name="PedidoReparacaoId" />
+            <Dependent Role="RelatorioServicoSet">
+              <PropertyRef Name="OficinaSetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PedidoReparacaoTipoReparacao">
-          <End Role="TipoReparacaoSet" Type="Self.TipoReparacaoSet" Multiplicity="1" />
-          <End Role="PedidoReparacaoSet" Type="Self.PedidoReparacaoSet" Multiplicity="*" />
+        <Association Name="FK_RelatorioServicoServicoSet">
+          <End Role="ServicoSet" Type="Self.ServicoSet" Multiplicity="1" />
+          <End Role="RelatorioServicoSet" Type="Self.RelatorioServicoSet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TipoReparacaoSet">
+            <Principal Role="ServicoSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PedidoReparacaoSet">
-              <PropertyRef Name="TipoReparacaoId" />
+            <Dependent Role="RelatorioServicoSet">
+              <PropertyRef Name="ServicoSet_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RespostaPedidoOficina">
           <End Role="OficinaSet" Type="Self.OficinaSet" Multiplicity="1" />
-          <End Role="RespostaPedidoSet" Type="Self.RespostaPedidoSet" Multiplicity="*" />
+          <End Role="OrcamentoSet" Type="Self.OrcamentoSet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OficinaSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="RespostaPedidoSet">
+            <Dependent Role="OrcamentoSet">
               <PropertyRef Name="Oficina_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicoAspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="ServicoSet" Type="Self.ServicoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServicoSet">
+              <PropertyRef Name="AspNetUsersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicoTipoReparacao">
+          <End Role="TipoReparacaoSet" Type="Self.TipoReparacaoSet" Multiplicity="1" />
+          <End Role="ServicoSet" Type="Self.ServicoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoReparacaoSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServicoSet">
+              <PropertyRef Name="TipoReparacaoId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -238,10 +317,12 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AvaliacaoClienteSet" EntityType="Self.AvaliacaoClienteSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OficinaSet" EntityType="Self.OficinaSet" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PedidoReparacaoSet" EntityType="Self.PedidoReparacaoSet" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RespostaPedidoSet" EntityType="Self.RespostaPedidoSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrcamentoSet" EntityType="Self.OrcamentoSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelatorioServicoSet" EntityType="Self.RelatorioServicoSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServicoSet" EntityType="Self.ServicoSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoReparacaoSet" EntityType="Self.TipoReparacaoSet" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_AspNetUserRoles_AspNetRoles" Association="Self.FK_AspNetUserRoles_AspNetRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
@@ -250,6 +331,18 @@
           <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers" Association="Self.FK_AspNetUserRoles_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AvaliacaoClienteAspNetUsers" Association="Self.FK_AvaliacaoClienteAspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AvaliacaoClienteSet" EntitySet="AvaliacaoClienteSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AvaliacaoClienteOficinaSet" Association="Self.FK_AvaliacaoClienteOficinaSet">
+            <End Role="OficinaSet" EntitySet="OficinaSet" />
+            <End Role="AvaliacaoClienteSet" EntitySet="AvaliacaoClienteSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AvaliacaoClienteServicoSet" Association="Self.FK_AvaliacaoClienteServicoSet">
+            <End Role="ServicoSet" EntitySet="ServicoSet" />
+            <End Role="AvaliacaoClienteSet" EntitySet="AvaliacaoClienteSet" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -263,21 +356,29 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="OficinaSet" EntitySet="OficinaSet" />
           </AssociationSet>
-          <AssociationSet Name="FK_PedidoReparacaoAspNetUsers" Association="Self.FK_PedidoReparacaoAspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="PedidoReparacaoSet" EntitySet="PedidoReparacaoSet" />
+          <AssociationSet Name="FK_OrcamentoSetServicoSet" Association="Self.FK_OrcamentoSetServicoSet">
+            <End Role="ServicoSet" EntitySet="ServicoSet" />
+            <End Role="OrcamentoSet" EntitySet="OrcamentoSet" />
           </AssociationSet>
-          <AssociationSet Name="FK_PedidoReparacaoRespostaPedido" Association="Self.FK_PedidoReparacaoRespostaPedido">
-            <End Role="PedidoReparacaoSet" EntitySet="PedidoReparacaoSet" />
-            <End Role="RespostaPedidoSet" EntitySet="RespostaPedidoSet" />
+          <AssociationSet Name="FK_RelatorioServicoOficinaSet" Association="Self.FK_RelatorioServicoOficinaSet">
+            <End Role="OficinaSet" EntitySet="OficinaSet" />
+            <End Role="RelatorioServicoSet" EntitySet="RelatorioServicoSet" />
           </AssociationSet>
-          <AssociationSet Name="FK_PedidoReparacaoTipoReparacao" Association="Self.FK_PedidoReparacaoTipoReparacao">
-            <End Role="TipoReparacaoSet" EntitySet="TipoReparacaoSet" />
-            <End Role="PedidoReparacaoSet" EntitySet="PedidoReparacaoSet" />
+          <AssociationSet Name="FK_RelatorioServicoServicoSet" Association="Self.FK_RelatorioServicoServicoSet">
+            <End Role="ServicoSet" EntitySet="ServicoSet" />
+            <End Role="RelatorioServicoSet" EntitySet="RelatorioServicoSet" />
           </AssociationSet>
           <AssociationSet Name="FK_RespostaPedidoOficina" Association="Self.FK_RespostaPedidoOficina">
             <End Role="OficinaSet" EntitySet="OficinaSet" />
-            <End Role="RespostaPedidoSet" EntitySet="RespostaPedidoSet" />
+            <End Role="OrcamentoSet" EntitySet="OrcamentoSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicoAspNetUsers" Association="Self.FK_ServicoAspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ServicoSet" EntitySet="ServicoSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicoTipoReparacao" Association="Self.FK_ServicoTipoReparacao">
+            <End Role="TipoReparacaoSet" EntitySet="TipoReparacaoSet" />
+            <End Role="ServicoSet" EntitySet="ServicoSet" />
           </AssociationSet>
           <AssociationSet Name="FK_TipoReparacaoOficina" Association="Self.FK_TipoReparacaoOficina">
             <End Role="TipoReparacaoSet" EntitySet="TipoReparacaoSet" />
@@ -335,9 +436,24 @@
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AvaliacaoClienteSet" Relationship="Self.FK_AvaliacaoClienteAspNetUsers" FromRole="AspNetUsers" ToRole="AvaliacaoClienteSet" />
           <NavigationProperty Name="OficinaSet" Relationship="Self.FK_OficinaAspNetUsers" FromRole="AspNetUsers" ToRole="OficinaSet" />
-          <NavigationProperty Name="PedidoReparacaoSet" Relationship="Self.FK_PedidoReparacaoAspNetUsers" FromRole="AspNetUsers" ToRole="PedidoReparacaoSet" />
+          <NavigationProperty Name="ServicoSet" Relationship="Self.FK_ServicoAspNetUsers" FromRole="AspNetUsers" ToRole="ServicoSet" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="AvaliacaoClienteSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OficinaSetId" Type="Int32" Nullable="false" />
+          <Property Name="AspNetUsersId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ServicoSetId" Type="Int32" Nullable="false" />
+          <Property Name="Avaliacao" Type="Int32" Nullable="false" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AvaliacaoClienteAspNetUsers" FromRole="AvaliacaoClienteSet" ToRole="AspNetUsers" />
+          <NavigationProperty Name="OficinaSet" Relationship="Self.FK_AvaliacaoClienteOficinaSet" FromRole="AvaliacaoClienteSet" ToRole="OficinaSet" />
+          <NavigationProperty Name="ServicoSet" Relationship="Self.FK_AvaliacaoClienteServicoSet" FromRole="AvaliacaoClienteSet" ToRole="ServicoSet" />
         </EntityType>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -360,37 +476,51 @@
           <Property Name="TipoReparacaoId" Type="Int32" Nullable="false" />
           <Property Name="Avaliacao" Type="Double" Nullable="false" />
           <Property Name="AspNetUsers_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_OficinaAspNetUsers" FromRole="OficinaSet" ToRole="AspNetUsers" />
-          <NavigationProperty Name="RespostaPedidoSet" Relationship="Self.FK_RespostaPedidoOficina" FromRole="OficinaSet" ToRole="RespostaPedidoSet" />
-          <NavigationProperty Name="TipoReparacaoSet" Relationship="Self.FK_TipoReparacaoOficina" FromRole="OficinaSet" ToRole="TipoReparacaoSet" />
           <Property Name="TotalAvaliacao" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_OficinaAspNetUsers" FromRole="OficinaSet" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AvaliacaoClienteSet" Relationship="Self.FK_AvaliacaoClienteOficinaSet" FromRole="OficinaSet" ToRole="AvaliacaoClienteSet" />
+          <NavigationProperty Name="RelatorioServicoSet" Relationship="Self.FK_RelatorioServicoOficinaSet" FromRole="OficinaSet" ToRole="RelatorioServicoSet" />
+          <NavigationProperty Name="OrcamentoSet" Relationship="Self.FK_RespostaPedidoOficina" FromRole="OficinaSet" ToRole="OrcamentoSet" />
+          <NavigationProperty Name="TipoReparacaoSet" Relationship="Self.FK_TipoReparacaoOficina" FromRole="OficinaSet" ToRole="TipoReparacaoSet" />
         </EntityType>
-        <EntityType Name="PedidoReparacaoSet">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DescricaoAvaria" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DataPedido" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Avaliacao" Type="Int16" Nullable="false" />
-          <Property Name="AspNetUsersId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TipoReparacaoId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_PedidoReparacaoAspNetUsers" FromRole="PedidoReparacaoSet" ToRole="AspNetUsers" />
-          <NavigationProperty Name="RespostaPedidoSet" Relationship="Self.FK_PedidoReparacaoRespostaPedido" FromRole="PedidoReparacaoSet" ToRole="RespostaPedidoSet" />
-          <NavigationProperty Name="TipoReparacaoSet" Relationship="Self.FK_PedidoReparacaoTipoReparacao" FromRole="PedidoReparacaoSet" ToRole="TipoReparacaoSet" />
-          <Property Name="Estado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="RespostaPedidoSet">
+        <EntityType Name="OrcamentoSet">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Valor" Type="Double" Nullable="false" />
           <Property Name="Aceite" Type="Boolean" Nullable="false" />
-          <Property Name="PedidoReparacaoId" Type="Int32" Nullable="false" />
           <Property Name="Oficina_Id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="OficinaSet" Relationship="Self.FK_RespostaPedidoOficina" FromRole="RespostaPedidoSet" ToRole="OficinaSet" />
-          <NavigationProperty Name="PedidoReparacaoSet" Relationship="Self.FK_PedidoReparacaoRespostaPedido" FromRole="RespostaPedidoSet" ToRole="PedidoReparacaoSet" />
+          <Property Name="ServicoSetId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OficinaSet" Relationship="Self.FK_RespostaPedidoOficina" FromRole="OrcamentoSet" ToRole="OficinaSet" />
+          <NavigationProperty Name="ServicoSet" Relationship="Self.FK_OrcamentoSetServicoSet" FromRole="OrcamentoSet" ToRole="ServicoSet" />
+        </EntityType>
+        <EntityType Name="RelatorioServicoSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OficinaSetId" Type="Int32" Nullable="false" />
+          <Property Name="ServicoSet_Id" Type="Int32" Nullable="false" />
+          <Property Name="DescricaoServico" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="OficinaSet" Relationship="Self.FK_RelatorioServicoOficinaSet" FromRole="RelatorioServicoSet" ToRole="OficinaSet" />
+          <NavigationProperty Name="ServicoSet" Relationship="Self.FK_RelatorioServicoServicoSet" FromRole="RelatorioServicoSet" ToRole="ServicoSet" />
+        </EntityType>
+        <EntityType Name="ServicoSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescricaoAvaria" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataPedido" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AspNetUsersId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TipoReparacaoId" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_ServicoAspNetUsers" FromRole="ServicoSet" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AvaliacaoClienteSet" Relationship="Self.FK_AvaliacaoClienteServicoSet" FromRole="ServicoSet" ToRole="AvaliacaoClienteSet" />
+          <NavigationProperty Name="OrcamentoSet" Relationship="Self.FK_OrcamentoSetServicoSet" FromRole="ServicoSet" ToRole="OrcamentoSet" />
+          <NavigationProperty Name="RelatorioServicoSet" Relationship="Self.FK_RelatorioServicoServicoSet" FromRole="ServicoSet" ToRole="RelatorioServicoSet" />
+          <NavigationProperty Name="TipoReparacaoSet" Relationship="Self.FK_ServicoTipoReparacao" FromRole="ServicoSet" ToRole="TipoReparacaoSet" />
         </EntityType>
         <EntityType Name="TipoReparacaoSet">
           <Key>
@@ -399,7 +529,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="OficinaSet" Relationship="Self.FK_TipoReparacaoOficina" FromRole="TipoReparacaoSet" ToRole="OficinaSet" />
-          <NavigationProperty Name="PedidoReparacaoSet" Relationship="Self.FK_PedidoReparacaoTipoReparacao" FromRole="TipoReparacaoSet" ToRole="PedidoReparacaoSet" />
+          <NavigationProperty Name="ServicoSet" Relationship="Self.FK_ServicoTipoReparacao" FromRole="TipoReparacaoSet" ToRole="ServicoSet" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -429,6 +559,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_AvaliacaoClienteAspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AvaliacaoClienteSet" Type="Self.AvaliacaoClienteSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AvaliacaoClienteSet">
+              <PropertyRef Name="AspNetUsersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_OficinaAspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="OficinaSet" Type="Self.OficinaSet" Multiplicity="*" />
@@ -441,26 +583,62 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PedidoReparacaoAspNetUsers">
+        <Association Name="FK_ServicoAspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-          <End Role="PedidoReparacaoSet" Type="Self.PedidoReparacaoSet" Multiplicity="*" />
+          <End Role="ServicoSet" Type="Self.ServicoSet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PedidoReparacaoSet">
+            <Dependent Role="ServicoSet">
               <PropertyRef Name="AspNetUsersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AvaliacaoClienteOficinaSet">
+          <End Role="OficinaSet" Type="Self.OficinaSet" Multiplicity="1" />
+          <End Role="AvaliacaoClienteSet" Type="Self.AvaliacaoClienteSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OficinaSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AvaliacaoClienteSet">
+              <PropertyRef Name="OficinaSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AvaliacaoClienteServicoSet">
+          <End Role="ServicoSet" Type="Self.ServicoSet" Multiplicity="1" />
+          <End Role="AvaliacaoClienteSet" Type="Self.AvaliacaoClienteSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServicoSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AvaliacaoClienteSet">
+              <PropertyRef Name="ServicoSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelatorioServicoOficinaSet">
+          <End Role="OficinaSet" Type="Self.OficinaSet" Multiplicity="1" />
+          <End Role="RelatorioServicoSet" Type="Self.RelatorioServicoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OficinaSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RelatorioServicoSet">
+              <PropertyRef Name="OficinaSetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RespostaPedidoOficina">
           <End Role="OficinaSet" Type="Self.OficinaSet" Multiplicity="1" />
-          <End Role="RespostaPedidoSet" Type="Self.RespostaPedidoSet" Multiplicity="*" />
+          <End Role="OrcamentoSet" Type="Self.OrcamentoSet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OficinaSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="RespostaPedidoSet">
+            <Dependent Role="OrcamentoSet">
               <PropertyRef Name="Oficina_Id" />
             </Dependent>
           </ReferentialConstraint>
@@ -477,26 +655,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PedidoReparacaoRespostaPedido">
-          <End Role="PedidoReparacaoSet" Type="Self.PedidoReparacaoSet" Multiplicity="1" />
-          <End Role="RespostaPedidoSet" Type="Self.RespostaPedidoSet" Multiplicity="*" />
+        <Association Name="FK_OrcamentoSetServicoSet">
+          <End Role="ServicoSet" Type="Self.ServicoSet" Multiplicity="1" />
+          <End Role="OrcamentoSet" Type="Self.OrcamentoSet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PedidoReparacaoSet">
+            <Principal Role="ServicoSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="RespostaPedidoSet">
-              <PropertyRef Name="PedidoReparacaoId" />
+            <Dependent Role="OrcamentoSet">
+              <PropertyRef Name="ServicoSetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PedidoReparacaoTipoReparacao">
+        <Association Name="FK_RelatorioServicoServicoSet">
+          <End Role="ServicoSet" Type="Self.ServicoSet" Multiplicity="1" />
+          <End Role="RelatorioServicoSet" Type="Self.RelatorioServicoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServicoSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RelatorioServicoSet">
+              <PropertyRef Name="ServicoSet_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicoTipoReparacao">
           <End Role="TipoReparacaoSet" Type="Self.TipoReparacaoSet" Multiplicity="1" />
-          <End Role="PedidoReparacaoSet" Type="Self.PedidoReparacaoSet" Multiplicity="*" />
+          <End Role="ServicoSet" Type="Self.ServicoSet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TipoReparacaoSet">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PedidoReparacaoSet">
+            <Dependent Role="ServicoSet">
               <PropertyRef Name="TipoReparacaoId" />
             </Dependent>
           </ReferentialConstraint>
@@ -510,10 +700,12 @@
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="AvaliacaoClienteSet" EntityType="Self.AvaliacaoClienteSet" />
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="OficinaSet" EntityType="Self.OficinaSet" />
-          <EntitySet Name="PedidoReparacaoSet" EntityType="Self.PedidoReparacaoSet" />
-          <EntitySet Name="RespostaPedidoSet" EntityType="Self.RespostaPedidoSet" />
+          <EntitySet Name="OrcamentoSet" EntityType="Self.OrcamentoSet" />
+          <EntitySet Name="RelatorioServicoSet" EntityType="Self.RelatorioServicoSet" />
+          <EntitySet Name="ServicoSet" EntityType="Self.ServicoSet" />
           <EntitySet Name="TipoReparacaoSet" EntityType="Self.TipoReparacaoSet" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -523,29 +715,49 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
           </AssociationSet>
+          <AssociationSet Name="FK_AvaliacaoClienteAspNetUsers" Association="Self.FK_AvaliacaoClienteAspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AvaliacaoClienteSet" EntitySet="AvaliacaoClienteSet" />
+          </AssociationSet>
           <AssociationSet Name="FK_OficinaAspNetUsers" Association="Self.FK_OficinaAspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="OficinaSet" EntitySet="OficinaSet" />
           </AssociationSet>
-          <AssociationSet Name="FK_PedidoReparacaoAspNetUsers" Association="Self.FK_PedidoReparacaoAspNetUsers">
+          <AssociationSet Name="FK_ServicoAspNetUsers" Association="Self.FK_ServicoAspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="PedidoReparacaoSet" EntitySet="PedidoReparacaoSet" />
+            <End Role="ServicoSet" EntitySet="ServicoSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AvaliacaoClienteOficinaSet" Association="Self.FK_AvaliacaoClienteOficinaSet">
+            <End Role="OficinaSet" EntitySet="OficinaSet" />
+            <End Role="AvaliacaoClienteSet" EntitySet="AvaliacaoClienteSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AvaliacaoClienteServicoSet" Association="Self.FK_AvaliacaoClienteServicoSet">
+            <End Role="ServicoSet" EntitySet="ServicoSet" />
+            <End Role="AvaliacaoClienteSet" EntitySet="AvaliacaoClienteSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelatorioServicoOficinaSet" Association="Self.FK_RelatorioServicoOficinaSet">
+            <End Role="OficinaSet" EntitySet="OficinaSet" />
+            <End Role="RelatorioServicoSet" EntitySet="RelatorioServicoSet" />
           </AssociationSet>
           <AssociationSet Name="FK_RespostaPedidoOficina" Association="Self.FK_RespostaPedidoOficina">
             <End Role="OficinaSet" EntitySet="OficinaSet" />
-            <End Role="RespostaPedidoSet" EntitySet="RespostaPedidoSet" />
+            <End Role="OrcamentoSet" EntitySet="OrcamentoSet" />
           </AssociationSet>
           <AssociationSet Name="FK_TipoReparacaoOficina" Association="Self.FK_TipoReparacaoOficina">
             <End Role="TipoReparacaoSet" EntitySet="TipoReparacaoSet" />
             <End Role="OficinaSet" EntitySet="OficinaSet" />
           </AssociationSet>
-          <AssociationSet Name="FK_PedidoReparacaoRespostaPedido" Association="Self.FK_PedidoReparacaoRespostaPedido">
-            <End Role="PedidoReparacaoSet" EntitySet="PedidoReparacaoSet" />
-            <End Role="RespostaPedidoSet" EntitySet="RespostaPedidoSet" />
+          <AssociationSet Name="FK_OrcamentoSetServicoSet" Association="Self.FK_OrcamentoSetServicoSet">
+            <End Role="ServicoSet" EntitySet="ServicoSet" />
+            <End Role="OrcamentoSet" EntitySet="OrcamentoSet" />
           </AssociationSet>
-          <AssociationSet Name="FK_PedidoReparacaoTipoReparacao" Association="Self.FK_PedidoReparacaoTipoReparacao">
+          <AssociationSet Name="FK_RelatorioServicoServicoSet" Association="Self.FK_RelatorioServicoServicoSet">
+            <End Role="ServicoSet" EntitySet="ServicoSet" />
+            <End Role="RelatorioServicoSet" EntitySet="RelatorioServicoSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicoTipoReparacao" Association="Self.FK_ServicoTipoReparacao">
             <End Role="TipoReparacaoSet" EntitySet="TipoReparacaoSet" />
-            <End Role="PedidoReparacaoSet" EntitySet="PedidoReparacaoSet" />
+            <End Role="ServicoSet" EntitySet="ServicoSet" />
           </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
@@ -603,6 +815,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="AvaliacaoClienteSet">
+            <EntityTypeMapping TypeName="OFICINABDModel.AvaliacaoClienteSet">
+              <MappingFragment StoreEntitySet="AvaliacaoClienteSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OficinaSetId" ColumnName="OficinaSetId" />
+                <ScalarProperty Name="AspNetUsersId" ColumnName="AspNetUsersId" />
+                <ScalarProperty Name="ServicoSetId" ColumnName="ServicoSetId" />
+                <ScalarProperty Name="Avaliacao" ColumnName="Avaliacao" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="OFICINABDModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="C__MigrationHistory">
@@ -616,7 +840,6 @@
           <EntitySetMapping Name="OficinaSet">
             <EntityTypeMapping TypeName="OFICINABDModel.OficinaSet">
               <MappingFragment StoreEntitySet="OficinaSet">
-                <ScalarProperty Name="TotalAvaliacao" ColumnName="TotalAvaliacao" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Morada" ColumnName="Morada" />
@@ -624,30 +847,40 @@
                 <ScalarProperty Name="TipoReparacaoId" ColumnName="TipoReparacaoId" />
                 <ScalarProperty Name="Avaliacao" ColumnName="Avaliacao" />
                 <ScalarProperty Name="AspNetUsers_Id" ColumnName="AspNetUsers_Id" />
+                <ScalarProperty Name="TotalAvaliacao" ColumnName="TotalAvaliacao" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PedidoReparacaoSet">
-            <EntityTypeMapping TypeName="OFICINABDModel.PedidoReparacaoSet">
-              <MappingFragment StoreEntitySet="PedidoReparacaoSet">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="DescricaoAvaria" ColumnName="DescricaoAvaria" />
-                <ScalarProperty Name="DataPedido" ColumnName="DataPedido" />
-                <ScalarProperty Name="Avaliacao" ColumnName="Avaliacao" />
-                <ScalarProperty Name="AspNetUsersId" ColumnName="AspNetUsersId" />
-                <ScalarProperty Name="TipoReparacaoId" ColumnName="TipoReparacaoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RespostaPedidoSet">
-            <EntityTypeMapping TypeName="OFICINABDModel.RespostaPedidoSet">
-              <MappingFragment StoreEntitySet="RespostaPedidoSet">
+          <EntitySetMapping Name="OrcamentoSet">
+            <EntityTypeMapping TypeName="OFICINABDModel.OrcamentoSet">
+              <MappingFragment StoreEntitySet="OrcamentoSet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Valor" ColumnName="Valor" />
                 <ScalarProperty Name="Aceite" ColumnName="Aceite" />
-                <ScalarProperty Name="PedidoReparacaoId" ColumnName="PedidoReparacaoId" />
                 <ScalarProperty Name="Oficina_Id" ColumnName="Oficina_Id" />
+                <ScalarProperty Name="ServicoSetId" ColumnName="ServicoSetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelatorioServicoSet">
+            <EntityTypeMapping TypeName="OFICINABDModel.RelatorioServicoSet">
+              <MappingFragment StoreEntitySet="RelatorioServicoSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OficinaSetId" ColumnName="OficinaSetId" />
+                <ScalarProperty Name="ServicoSet_Id" ColumnName="ServicoSet_Id" />
+                <ScalarProperty Name="DescricaoServico" ColumnName="DescricaoServico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServicoSet">
+            <EntityTypeMapping TypeName="OFICINABDModel.ServicoSet">
+              <MappingFragment StoreEntitySet="ServicoSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DescricaoAvaria" ColumnName="DescricaoAvaria" />
+                <ScalarProperty Name="DataPedido" ColumnName="DataPedido" />
+                <ScalarProperty Name="AspNetUsersId" ColumnName="AspNetUsersId" />
+                <ScalarProperty Name="TipoReparacaoId" ColumnName="TipoReparacaoId" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

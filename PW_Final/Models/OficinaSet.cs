@@ -17,7 +17,9 @@ namespace PW_Final.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public OficinaSet()
         {
-            this.RespostaPedidoSet = new HashSet<RespostaPedidoSet>();
+            this.AvaliacaoClienteSet = new HashSet<AvaliacaoClienteSet>();
+            this.RelatorioServicoSet = new HashSet<RelatorioServicoSet>();
+            this.OrcamentoSet = new HashSet<OrcamentoSet>();
         }
     
         public int Id { get; set; }
@@ -31,7 +33,11 @@ namespace PW_Final.Models
     
         public virtual AspNetUsers AspNetUsers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RespostaPedidoSet> RespostaPedidoSet { get; set; }
+        public virtual ICollection<AvaliacaoClienteSet> AvaliacaoClienteSet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RelatorioServicoSet> RelatorioServicoSet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrcamentoSet> OrcamentoSet { get; set; }
         public virtual TipoReparacaoSet TipoReparacaoSet { get; set; }
     }
 }

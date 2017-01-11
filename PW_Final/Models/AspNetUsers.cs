@@ -19,8 +19,9 @@ namespace PW_Final.Models
         {
             this.AspNetUserClaims = new HashSet<AspNetUserClaims>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogins>();
+            this.AvaliacaoClienteSet = new HashSet<AvaliacaoClienteSet>();
             this.OficinaSet = new HashSet<OficinaSet>();
-            this.PedidoReparacaoSet = new HashSet<PedidoReparacaoSet>();
+            this.ServicoSet = new HashSet<ServicoSet>();
             this.AspNetRoles = new HashSet<AspNetRoles>();
         }
     
@@ -42,9 +43,11 @@ namespace PW_Final.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AvaliacaoClienteSet> AvaliacaoClienteSet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OficinaSet> OficinaSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PedidoReparacaoSet> PedidoReparacaoSet { get; set; }
+        public virtual ICollection<ServicoSet> ServicoSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
     }
