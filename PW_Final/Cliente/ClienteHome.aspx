@@ -1,9 +1,24 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="ClienteHome.aspx.cs" Inherits="PW_Final.Cliente.ClientHome" %>
 
 <asp:Content runat="server" ID="Menu" ContentPlaceHolderID="DashMenu">
-
-                <asp:HyperLink ID="homeHL" CssClass="list-group-item active" runat="server" NavigateUrl="~/Cliente/ClientHome">Home</asp:HyperLink>
-                <asp:HyperLink ID="managePedidosHL" CssClass="list-group-item" runat="server" NavigateUrl="~/Cliente/Pedidos">Gerir Meus Pedidos</asp:HyperLink>
+         <ul class="sidebar-nav">
+                
+                <li>
+                    <a href="/Cliente/ClienteHome">Dashboard</a>
+                </li>
+                <li>
+                    <a href="/Cliente/Pedidos">Os meus pedidos</a>
+                    <ul class="sub-menu">
+                        <li><a href="/Cliente/NovoPedido">Novo Pedido</a></li>
+                        <li><a href="/Cliente/Pedidos">Meus Pedidos</a></li>
+                        <li><a href="/Cliente/Pedidos">Em Serviço</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">As Minhas Avaliaçoes</a>  
+                                
+                </li>
+            </ul>
                 
                             
 </asp:Content>

@@ -23,9 +23,9 @@ namespace PW_Final.Cliente
         public void fillData()
         {
             this.pedidosGridView.DataSource = client.MeusPedidos();
-           
+
             pedidosGridView.DataBind();
-            
+
 
         }
         protected void AddNew(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace PW_Final.Cliente
             int i = Convert.ToInt32(hd.Value);
             client.EliminaPedido(i);
             fillData();
-            
+
         }
         protected void Respostas(object sender, EventArgs e)
         {
@@ -48,15 +48,35 @@ namespace PW_Final.Cliente
             respostasGridView.DataBind();
             respostasPanel.Visible = true;
         }
-        protected void AceitaResposta(object sender, EventArgs e) {
+        protected void AceitaOrcamento(object sender, EventArgs e)
+        {
             HiddenField hd = (HiddenField)((LinkButton)sender).FindControl("idPedido");
             int ip = Convert.ToInt32(hd.Value);
             hd = (HiddenField)((LinkButton)sender).FindControl("idResposta");
             int ir = Convert.ToInt32(hd.Value);
-            /*client.AceitaResposta(ip, ir);
-            respostasGridView.DataSource = client.myRespostas(ip);*/
+            client.AceitaResposta(ip, ir);
+            respostasGridView.DataSource = client.ListarRespostasServico(ip);
+            respostasGridView.DataBind();
+            fillData();
+        }
+        protected void ApagaOrcamento(object sender, EventArgs e)
+        {
+            HiddenField hd = (HiddenField)((LinkButton)sender).FindControl("idResposta");
+            int ir = Convert.ToInt32(hd.Value);
+            client.ApagaOrcamento(ir);
+            respostasGridView.DataSource = client.ListarRespostasServico(ir);
             respostasGridView.DataBind();
         }
-        
+        protected void Avaliar(object sender, EventArgs e)
+        {
+            HiddenField hd = (HiddenField)((LinkButton)sender).FindControl("idPedido");
+            int ip = Convert.ToInt32(hd.Value);
+            hd = (HiddenField)((LinkButton)sender).FindControl("idOficina");
+            int io = Convert.ToInt32(hd.Value);
+            Avaliacao.servicoAval = ip;
+            Avaliacao.userAval = client.getID();
+            Avaliacao.OficinaAval = io;
+            Response.Redirect("~/Cliente/Avaliacao.aspx");
+        }
     }
 }

@@ -13,24 +13,6 @@ namespace PW_Final.Cliente {
     public partial class NovoPedido {
         
         /// <summary>
-        /// homeHL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink homeHL;
-        
-        /// <summary>
-        /// managePedidosHL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink managePedidosHL;
-        
-        /// <summary>
         /// ErrorMessage control.
         /// </summary>
         /// <remarks>

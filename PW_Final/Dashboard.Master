@@ -3,13 +3,24 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Dashboard</h2>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-2">
             <asp:ContentPlaceHolder ID="DashMenu" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <div class="col-md-8">
-            <asp:ContentPlaceHolder ID="DashContent" runat="server">
-            </asp:ContentPlaceHolder>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-12">
+                    <asp:ContentPlaceHolder ID="PageControllers" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <div class="row" style="margin-top:10px;">
+                <div class="col-md-8">
+                    <asp:ContentPlaceHolder ID="DashContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+            
         </div>
     </div>
 </asp:Content>

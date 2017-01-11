@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PW_Final.Reparacao {
+namespace PW_Final.Oficina {
     
     
-    public partial class Reparacoes {
+    public partial class MeusOrcamentos {
         
         /// <summary>
-        /// pendingGridView control.
+        /// pedidosGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView pendingGridView;
+        protected global::System.Web.UI.WebControls.GridView pedidosGridView;
     }
 }

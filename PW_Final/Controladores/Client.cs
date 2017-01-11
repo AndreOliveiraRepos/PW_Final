@@ -34,10 +34,6 @@ namespace PW_Final.Controladores
                 return instance;
             }
         }
-
-
-        
-
        public ArrayList MeusPedidos() {
             myList = new ArrayList();
             myList = service.ListaPorUser(id);     
@@ -51,74 +47,37 @@ namespace PW_Final.Controladores
         public void EliminaPedido(Int32 indice) {
             service.EliminaServico(indice);
         }
-        public void ListarRespostasServico(int indiceServico) {
+        public ArrayList ListarRespostasServico(int indiceServico) {
             myAnswers = new ArrayList();
             Budget budget = new Budget();
             myAnswers = budget.ListaPorServico(indiceServico);
-
+            return myAnswers;
         }
-        /* public Boolean NovoPedido(string r,string desc) {
-             var tipo = (from t in db.TipoReparacaoSet
-                         where t.Descricao.Equals(r)
-                         select t
-                         ).FirstOrDefault();
-             var today = DateTime.Now.Date;
+        public void AceitaResposta(int indicePedido, int indiceResposta) {
+            Budget budget = new Budget();
+            budget.AceitaOrcamento(indicePedido, indiceResposta);
+        }
+        public void ApagaOrcamento(int indiceOrcamento) {
+            Budget budget = new Budget();
+            budget.ApagaOrcamento(indiceOrcamento);
+         
+        }
+        public ArrayList ServicosCompletos() {
+            myList = new ArrayList();
+            myList = service.ListaPorUserCompletos(id);
+            return myList;
+        }
+        public void Avalia(string userId, int indiceOficina, int indiceServico, string desc, int a) {
+            ClientReview review = new ClientReview();
+            review.AdicionaNova(userId, indiceOficina, indiceServico, desc, a);
+        }
 
-             var result = db.PedidoReparacaoSet.Add(new PedidoReparacaoSet()
-             {
-                 DescricaoAvaria = desc,
-                 DataPedido = today,
-                 Avaliacao = 0,
-                 AspNetUsersId = id,
-                 TipoReparacaoId = tipo.Id,
-                 Estado = "Sem Respostas"
-
-             });
-             db.SaveChanges();
-             return true;
-         }
-
-         public Boolean AceitaResposta(int indicePedido, int indiceResposta) {
-             var respostas = db.RespostaPedidoSet.Where(r => r.PedidoReparacaoId == indicePedido).ToList();
-             foreach (var item in respostas)
-             {
-                 if (item.Id == indiceResposta)
-                 {
-                     item.Aceite = true;
-
-                 }
-                 else {
-                     db.RespostaPedidoSet.Remove(item);
-                 }
-             }
-             db.PedidoReparacaoSet.Find(indicePedido).Estado = "Aguarda Resolução";
-             db.SaveChanges();
-             return true;
-         }
-
-         public Boolean AvaliaReparacao(int indice,int avalia)
-         {
-
-             return true;
-         }
-
-         public ArrayList myRespostas(int indice) {
-             myAnswers  = new ArrayList();
-             var respostas = (from r in db.RespostaPedidoSet
-                            where r.PedidoReparacaoId == indice
-                            select new
-                            {
-                                idPedido = r.PedidoReparacaoId,
-                                idResposta = r.Id,
-                                Valor = r.Valor,
-                                Nome = r.OficinaSet.Nome,
-                                Tipo = r.PedidoReparacaoSet.TipoReparacaoSet.Descricao,
-                                Descricao = r.PedidoReparacaoSet.DescricaoAvaria
-
-                            }).ToList();
-             myAnswers.AddRange(respostas);
-
-             return myAnswers;
-         }*/
+        public ArrayList ListaAvaliacoes() {
+            myList = new ArrayList();
+            ClientReview review = new ClientReview();
+            myList = review.ListarPorCliente(id);
+            return myList;
+        }
+        public string getID() { return id; }
     }
 }

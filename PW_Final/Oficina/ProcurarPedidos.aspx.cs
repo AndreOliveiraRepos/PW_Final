@@ -13,7 +13,6 @@ namespace PW_Final.Oficina
 {
     public partial class ProcurarPedidos : System.Web.UI.Page
     {
-        private EntitiesConnection db = new EntitiesConnection();
         private RepairShop shop;
         private Service service;
         private Budget budget;
@@ -25,25 +24,25 @@ namespace PW_Final.Oficina
         }
         public void fillData()
         {
-           
-            pedidosGridView.DataSource = shop.TodosOsPedidos();
+            service = new Service();
+            pedidosGridView.DataSource = service.ListarTodosPorTipoSemOrçamento(shop.getMyType());
 
             pedidosGridView.DataBind();
 
         }
-
         protected void NovaResposta(object sender, EventArgs e)
         {
             HiddenField hd = (HiddenField)((LinkButton)sender).FindControl("idPedido");
             aux = Convert.ToInt32(hd.Value);
             respostaPanel.Visible = true;
         }
-        protected void AddNew(object sender, EventArgs e) {
+        protected void AddNew(object sender, EventArgs e)
+        {
 
             int i = aux;
             double v = Convert.ToDouble(Valor.Text);
 
-            
+
 
             shop.ResponderPedido(i, v);
             //refresh
@@ -51,5 +50,6 @@ namespace PW_Final.Oficina
             aux = 0;
             fillData();
         }
+
     }
 }

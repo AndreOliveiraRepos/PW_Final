@@ -7,45 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PW_Final.Cliente {
+namespace PW_Final.Oficina {
     
     
-    public partial class Pedidos {
+    public partial class NovoRelatorio {
         
         /// <summary>
-        /// pedidosPanel control.
+        /// ErrorMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pedidosPanel;
+        protected global::System.Web.UI.WebControls.PlaceHolder ErrorMessage;
         
         /// <summary>
-        /// pedidosGridView control.
+        /// FailureText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView pedidosGridView;
+        protected global::System.Web.UI.WebControls.Literal FailureText;
         
         /// <summary>
-        /// respostasPanel control.
+        /// successPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel respostasPanel;
+        protected global::System.Web.UI.WebControls.PlaceHolder successPanel;
         
         /// <summary>
-        /// respostasGridView control.
+        /// Descritivo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView respostasGridView;
+        protected global::System.Web.UI.WebControls.TextBox Descritivo;
     }
 }

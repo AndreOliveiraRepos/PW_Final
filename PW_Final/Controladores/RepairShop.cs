@@ -11,10 +11,11 @@ namespace PW_Final.Controladores
     public class RepairShop
     {
         private ArrayList myList;
-        private ArrayList myAnswers;
+        
         private string id;
         private static RepairShop instance;
         private EntitiesConnection db = new EntitiesConnection();
+        private int idShop;
         private int idTipo;
         private RepairShop()
         {
@@ -22,7 +23,8 @@ namespace PW_Final.Controladores
             OficinaSet myTipo = (from o in db.OficinaSet
                                  where o.AspNetUsers_Id == id
                                  select o).FirstOrDefault();
-            idTipo = myTipo.Id;
+            idTipo = myTipo.TipoReparacaoId;
+            idShop = myTipo.Id;
         }
 
         public static RepairShop Instance
@@ -50,14 +52,26 @@ namespace PW_Final.Controladores
             //necessary fields
 
 
+        }    
+        public ArrayList ListaReviews() {
+            myList = new ArrayList();
+            ClientReview cr = new ClientReview();
+            myList = cr.ListarPorOficina(idShop);
+            return myList;
         }
-
-       /* public ArrayList myRespostas(int indice) {
-            return myAnswers;
-        }
-
         public Boolean RemoverResposta(int indice) {
             return true;
-        }*/
+        }
+        public int getID() { return idShop; }
+        public OficinaSet ShopData(int id) {
+            OficinaSet oficina = db.OficinaSet.Find(id);
+
+            return oficina;
+        }
+        public ArrayList ListarPendentes() {
+            myList = new ArrayList();
+            return myList;
+        }
+        public int getMyType() { return idTipo; }
     }
 }

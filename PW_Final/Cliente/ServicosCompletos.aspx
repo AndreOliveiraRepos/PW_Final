@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="Pedidos.aspx.cs" Inherits="PW_Final.Cliente.Pedidos" %>
-
+﻿<%@ Page Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="ServicosCompletos.aspx.cs" Inherits="PW_Final.Cliente.ServicosCompletos" %>
 
 <asp:Content runat="server" ID="Menu" ContentPlaceHolderID="DashMenu">
 
@@ -25,11 +24,11 @@
                  
                             
 </asp:Content>
+
 <asp:Content runat="server" ID="Content2" ContentPlaceHolderID="PageControllers">
-    <div class="col-md-2">
-            <asp:Button runat="server" OnClick="AddNew" Text="Adicionar" CssClass="btn btn-default" />
-        </div>
+   <!--Inserir caixa de mensagem aqui-->
 </asp:Content>
+
 <asp:Content runat="server" ID="Content1" ContentPlaceHolderID="DashContent">
     <!--Inserir caixa de mensagem aqui-->
     <div class="row">
@@ -46,11 +45,12 @@
                     <asp:BoundField DataField="Estado" HeaderText="Estado" />                    
                    <asp:TemplateField HeaderText="Opções">
                         <ItemTemplate>
-                            <asp:LinkButton runat="server" Text="Respostas" OnClick="Respostas" CssClass="btn btn-default" />
                             
-                            <asp:HiddenField ID="idPedido" runat="server" value='<%# Eval("idPedido") %>'/>
-                            <asp:LinkButton runat="server" Text="Remover" OnClick="Delete" CssClass="btn btn-default" />
+                            
+                            <asp:HiddenField ID="idPedido" runat="server" value='<%# Eval("idPedido") %>'/>   
+                            <asp:HiddenField ID="idOficina" runat="server" value='<%# Eval("idOficina") %>'/>                            
                             <asp:LinkButton runat="server" Text="Avaliar" OnClick="Avaliar" CssClass="btn btn-default" />
+
                         </ItemTemplate>
                        
                     </asp:TemplateField>
@@ -64,34 +64,7 @@
         
        </asp:Panel>
     </div>
-    <div class="row">
-        <asp:Panel ID="respostasPanel" runat="server" Visible="false">
-            <asp:GridView ID="respostasGridView" CssClass="table table-bordered" runat="server" BorderStyle="None" AutoGenerateColumns="false" >
-                <Columns >
-                    
-                    <asp:BoundField DataField="Descricao" HeaderText="Descrição" />
-                    <asp:BoundField DataField="Valor" HeaderText="Valor do Orçamento" />
-                    <asp:BoundField DataField="Tipo" HeaderText="Tipo do Pedido" />                    
-                    <asp:BoundField DataField="Nome" HeaderText="Nome da Oficina" />
-                    
-                   <asp:TemplateField HeaderText="Opções">
-                        <ItemTemplate>
-                            <asp:LinkButton runat="server" Text="Aceitar" OnClick="AceitaOrcamento" CssClass="btn btn-default" />
-                            <asp:HiddenField ID="idPedido" runat="server" value='<%# Eval("idPedido") %>'/>
-                            <asp:HiddenField ID="idResposta" runat="server" value='<%# Eval("idOrcamento") %>'/>
-                            <asp:LinkButton runat="server" Text="Remover" OnClick="ApagaOrcamento" CssClass="btn btn-default" />
-                            <asp:LinkButton runat="server" Text="Perfil" CssClass="btn btn-default" />
-                        </ItemTemplate>
-                       
-                    </asp:TemplateField>
-                    
-                    
-                    
-                </Columns>
-                
-            </asp:GridView>
+    
 
-        </asp:Panel>
-
-    </div>
+    
 </asp:Content>

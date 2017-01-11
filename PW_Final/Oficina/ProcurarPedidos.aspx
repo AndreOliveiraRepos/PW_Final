@@ -1,30 +1,49 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="ProcurarPedidos.aspx.cs" Inherits="PW_Final.Oficina.ProcurarPedidos" %>
 
 
-<asp:Content runat="server" ID="Menu" ContentPlaceHolderID="DashMenu">
+<asp:Content runat="server" ID="Content2" ContentPlaceHolderID="DashMenu">
 
-                <asp:HyperLink ID="homeHL" CssClass="list-group-item" runat="server" NavigateUrl="~/Oficina/OficinaHome">Home</asp:HyperLink>
-                <asp:HyperLink ID="searchRequestsHL" CssClass="list-group-item active" runat="server" NavigateUrl="~/Oficina/ProcurarPedidos.aspx">Procurar Pedidos</asp:HyperLink>
-                <asp:HyperLink ID="manageAnswersHL" CssClass="list-group-item" runat="server" NavigateUrl="~/Oficina/Respostas.aspx">Listar as minhas respostas</asp:HyperLink>
+               <ul class="sidebar-nav">
                 
-                 <div class="col-md-2">
-            
-        </div>
+                        <li>
+                            <a href="/Oficina/OficinaHome">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="/Oficina/ProcurarPedidos.aspx">Serviços</a>
+                            <ul class="sub-menu">
+                                <li><a href="/Oficina/ProcurarPedidos.aspx">Mostrar Novos</a></li>
+                                <li><a href="/Oficina/ProcurarPedidos.aspx">Mostrar Historico</a></li>
+                                <li><a href="/Oficina/ProcurarPedidos.aspx">Os Meus Pendentes</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/Oficina/Respostas.aspx">Os Meus Orçamentos</a>  
+                                
+                        </li>
+                        <li>
+                            <a href="/Oficina/Respostas.aspx">Os meus Relatórios</a>  
+                                
+                        </li>
+                    </ul>
+                
                             
 </asp:Content>
 
+
+                            
+
+                            
+
+
 <asp:Content runat="server" ID="Content1" ContentPlaceHolderID="DashContent">
-    <!--Inserir caixa de mensagem aqui-->
-    <div class="row">
+<div class="row">
         <div class="col-md-8">
             <asp:GridView ID="pedidosGridView" CssClass="table table-bordered" runat="server" BorderStyle="None" AutoGenerateColumns="false" >
                 <Columns >
                     
                     
                     <asp:BoundField DataField="Descricao" HeaderText="Descrição" />
-                    <asp:BoundField DataField="Data" HeaderText="Data" />                    
-                    <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
-                    <asp:BoundField DataField="Orcamentos" HeaderText="Orçamentos" />
+                    <asp:BoundField DataField="Data" HeaderText="Data" />                                                         
                     <asp:BoundField DataField="Estado" HeaderText="Estado" />     
                     
                    <asp:TemplateField HeaderText="Opções">
@@ -79,7 +98,4 @@
 
         </asp:Panel>
     </div>
-
-     
-    
 </asp:Content>

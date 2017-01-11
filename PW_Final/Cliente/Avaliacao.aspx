@@ -1,8 +1,8 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="NovoPedido.aspx.cs" Inherits="PW_Final.Cliente.NovoPedido" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="Avaliacao.aspx.cs" Inherits="PW_Final.Cliente.Avaliacao" %>
 
 <asp:Content runat="server" ID="Menu" ContentPlaceHolderID="DashMenu">
 
-                 <ul class="sidebar-nav">
+                <ul class="sidebar-nav">
                 
                 <li>
                     <a href="/Cliente/ClienteHome">Dashboard</a>
@@ -20,16 +20,16 @@
                                 
                 </li>
             </ul>
-                
                             
 </asp:Content>
 
 <asp:Content runat="server" ID="Content1" ContentPlaceHolderID="DashContent">
+    <!--Inserir caixa de mensagem aqui-->
     <div class="row">
         <div class="col-md-12">
             <section id="loginForm">
                 <div class="form-horizontal">
-                    <h4>Novo Pedido de Serviço.</h4>
+                    <h4>Nova Avaliação.</h4>
                     <hr />
                     <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                         <p class="text-danger">
@@ -38,28 +38,38 @@
                     </asp:PlaceHolder>
                     <asp:PlaceHolder runat="server" ID="successPanel" ViewStateMode="Disabled" Visible="false">
                     <p>
-                        Novo Pedido de Serviço Adicionado
+                        Avaliação adicionada
                     </p>
                 </asp:PlaceHolder>
                     <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="Descricao" CssClass="col-md-2 control-label">Descreva o problema</asp:Label>
+                        <asp:Label runat="server" AssociatedControlID="Comentario" CssClass="col-md-2 control-label">Breve Comentário</asp:Label>
                         <div class="col-md-10">
-                            <asp:TextBox runat="server" ID="Descricao" CssClass="form-control" TextMode="MultiLine" />
-                            <asp:RequiredFieldValidator runat="server" ControlToValidate="Descricao"
-                                CssClass="text-danger" ErrorMessage="Descreva o seu problema." />
+                            <asp:TextBox runat="server" ID="Comentario" CssClass="form-control" TextMode="MultiLine" />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="Comentario"
+                                CssClass="text-danger" ErrorMessage="Escreva um comentário." />
                         </div>
                     </div>
                     <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="tipoDropDownList" CssClass="col-md-2 control-label">Tipo de Oficina</asp:Label>
-                        <div class="col-md-10">
-                             <asp:DropDownList ID="tipoDropDownList" CssClass="form-control" runat="server"></asp:DropDownList>
-                            <asp:RequiredFieldValidator runat="server" ControlToValidate="tipoDropDownList"
-                                CssClass="text-danger" ErrorMessage="Escolha o tipo de Serviço." />
+                        <asp:Label runat="server" AssociatedControlID="avalicaoDropDownList" CssClass="col-md-2 control-label">Pontuação</asp:Label>
+                        <div class="col-md-2">
+                             <asp:DropDownList ID="avalicaoDropDownList" CssClass="form-control" runat="server">
+                                 <asp:ListItem>1</asp:ListItem>
+                                 <asp:ListItem>2</asp:ListItem>
+                                 <asp:ListItem>3</asp:ListItem>
+                                 <asp:ListItem>4</asp:ListItem>
+                                 <asp:ListItem>5</asp:ListItem>
+                             </asp:DropDownList>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="avalicaoDropDownList" CssClass="text-danger" ErrorMessage="Escolha uma pontuação" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                           <asp:Button runat="server" OnClick="AddNew" Text="Adicionar" CssClass="btn btn-default" />
+                        <div class="col-md-2">
+                           <asp:Button runat="server" Text="Adicionar" OnClick="Avalia" CssClass="btn btn-default" />
+
+                        </div>
+                        <div class="col-md-2">
+                           <asp:Button runat="server" Text="Cancelar" CssClass="btn btn-default" />
+
                         </div>
                     </div>
                         

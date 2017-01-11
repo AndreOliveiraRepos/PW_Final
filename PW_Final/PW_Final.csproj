@@ -181,9 +181,13 @@
     <Content Include="App_Data\OFICINABD_log.ldf">
       <DependentUpon>OFICINABD.mdf</DependentUpon>
     </Content>
+    <Content Include="Cliente\Avaliacao.aspx" />
     <Content Include="Cliente\ClienteHome.aspx" />
+    <Content Include="Cliente\HistoricoCliente.aspx" />
+    <Content Include="Cliente\ListaAvaliacoes.aspx" />
     <Content Include="Cliente\NovoPedido.aspx" />
     <Content Include="Cliente\Pedidos.aspx" />
+    <Content Include="Cliente\ServicosCompletos.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -213,9 +217,14 @@
       <DependentUpon>OficinaModel.edmx</DependentUpon>
       <LastGenOutput>OficinaModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Oficina\Historico.aspx" />
+    <Content Include="Oficina\MeusOrcamentos.aspx" />
+    <Content Include="Oficina\NovoRelatorio.aspx" />
     <Content Include="Oficina\OficinaHome.aspx" />
+    <Content Include="Oficina\OficinaPerfil.aspx" />
+    <Content Include="Oficina\Pendentes.aspx" />
     <Content Include="Oficina\ProcurarPedidos.aspx" />
-    <Content Include="Reparacao\Reparacoes.aspx" />
+    <Content Include="Oficina\Relatorios.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -413,8 +422,6 @@
     <Compile Include="Admin\ListaTipoOficina.aspx.designer.cs">
       <DependentUpon>ListaTipoOficina.aspx</DependentUpon>
     </Compile>
-    <Content Include="Controladores\ServiceReport.cs" />
-    <Content Include="Controladores\ClientReview.cs" />
     <Content Include="Controladores\RepairType.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -427,6 +434,34 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Cliente\Avaliacao.aspx.cs">
+      <DependentUpon>Avaliacao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente\Avaliacao.aspx.designer.cs">
+      <DependentUpon>Avaliacao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\HistoricoCliente.aspx.cs">
+      <DependentUpon>HistoricoCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente\HistoricoCliente.aspx.designer.cs">
+      <DependentUpon>HistoricoCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\ListaAvaliacoes.aspx.cs">
+      <DependentUpon>ListaAvaliacoes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente\ListaAvaliacoes.aspx.designer.cs">
+      <DependentUpon>ListaAvaliacoes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente\ServicosCompletos.aspx.cs">
+      <DependentUpon>ServicosCompletos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente\ServicosCompletos.aspx.designer.cs">
+      <DependentUpon>ServicosCompletos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Controladores\Budget.cs" />
     <Compile Include="Controladores\Client.cs" />
     <Compile Include="Cliente\ClienteHome.aspx.cs">
@@ -450,7 +485,9 @@
     <Compile Include="Cliente\Pedidos.aspx.designer.cs">
       <DependentUpon>Pedidos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controladores\ClientReview.cs" />
     <Compile Include="Controladores\Service.cs" />
+    <Compile Include="Controladores\ServiceReport.cs" />
     <Compile Include="Dashboard.Master.cs">
       <DependentUpon>Dashboard.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -524,12 +561,47 @@
     <Compile Include="Models\TipoReparacaoSet.cs">
       <DependentUpon>OficinaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Oficina\Historico.aspx.cs">
+      <DependentUpon>Historico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Oficina\Historico.aspx.designer.cs">
+      <DependentUpon>Historico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Oficina\MeusOrcamentos.aspx.cs">
+      <DependentUpon>MeusOrcamentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Oficina\MeusOrcamentos.aspx.designer.cs">
+      <DependentUpon>MeusOrcamentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Oficina\NovoRelatorio.aspx.cs">
+      <DependentUpon>NovoRelatorio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Oficina\NovoRelatorio.aspx.designer.cs">
+      <DependentUpon>NovoRelatorio.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Oficina\OficinaHome.aspx.cs">
       <DependentUpon>OficinaHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Oficina\OficinaHome.aspx.designer.cs">
       <DependentUpon>OficinaHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Oficina\OficinaPerfil.aspx.cs">
+      <DependentUpon>OficinaPerfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Oficina\OficinaPerfil.aspx.designer.cs">
+      <DependentUpon>OficinaPerfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Oficina\Pendentes.aspx.cs">
+      <DependentUpon>Pendentes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Oficina\Pendentes.aspx.designer.cs">
+      <DependentUpon>Pendentes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Oficina\ProcurarPedidos.aspx.cs">
       <DependentUpon>ProcurarPedidos.aspx</DependentUpon>
@@ -539,14 +611,14 @@
       <DependentUpon>ProcurarPedidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controladores\RepairShop.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reparacao\Reparacoes.aspx.cs">
-      <DependentUpon>Reparacoes.aspx</DependentUpon>
+    <Compile Include="Oficina\Relatorios.aspx.cs">
+      <DependentUpon>Relatorios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reparacao\Reparacoes.aspx.designer.cs">
-      <DependentUpon>Reparacoes.aspx</DependentUpon>
+    <Compile Include="Oficina\Relatorios.aspx.designer.cs">
+      <DependentUpon>Relatorios.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -573,7 +645,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="MasterPages\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
