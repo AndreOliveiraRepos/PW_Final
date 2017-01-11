@@ -49,7 +49,8 @@ namespace PW_Final.Cliente
                           Data = p.DataPedido,
                           Avaliacao = p.Avaliacao,
                           Tipo = p.TipoReparacaoSet.Descricao,
-                          Respostas = p.RespostaPedidoSet.Count
+                          Respostas = p.RespostaPedidoSet.Count,
+                          Estado = p.Estado
 
                       }).ToList();
             myList.AddRange(pedidos);           
@@ -92,8 +93,9 @@ namespace PW_Final.Cliente
                 DataPedido = today,
                 Avaliacao = 0,
                 AspNetUsersId = id,
-                TipoReparacaoId = tipo.Id
-
+                TipoReparacaoId = tipo.Id,
+                Estado = "Sem Respostas"
+                
             });
             db.SaveChanges();
             return true;
@@ -112,6 +114,7 @@ namespace PW_Final.Cliente
                     db.RespostaPedidoSet.Remove(item);
                 }
             }
+            db.PedidoReparacaoSet.Find(indicePedido).Estado = "Aguarda Resolução";
             db.SaveChanges();
             return true;
         }

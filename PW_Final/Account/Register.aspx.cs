@@ -57,7 +57,9 @@ namespace PW_Final.Account
                         Telefone = TelefoneOficina.Text,
                         TipoReparacaoId = tipo.Id,
                         Avaliacao = 0,
-                        AspNetUsers_Id = currentUser.Id
+                        AspNetUsers_Id = currentUser.Id,
+                        TotalAvaliacao = 0
+                        
                     });
                     db.SaveChanges();
                 }

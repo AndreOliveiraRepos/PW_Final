@@ -26,6 +26,7 @@
                     <asp:BoundField DataField="Avaliacao" HeaderText="Avaliação" />
                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
                     <asp:BoundField DataField="Respostas" HeaderText="Respostas" />
+                    <asp:BoundField DataField="Estado" HeaderText="Estado" />
                     
                    <asp:TemplateField HeaderText="Opções">
                         <ItemTemplate>

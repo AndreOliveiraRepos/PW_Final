@@ -47,8 +47,10 @@ namespace PW_Final.Oficina
                 PedidoReparacaoId = indice,
                 Valor = v,
                 Aceite = false
+                
 
             });
+            db.PedidoReparacaoSet.Find(indice).Estado = "Com respostas";
             db.SaveChanges();
             //refresh
             
@@ -70,7 +72,8 @@ namespace PW_Final.Oficina
                                 Data = p.DataPedido,
                                 Avaliacao = p.Avaliacao,
                                 Tipo = p.TipoReparacaoSet.Descricao,
-                                Respostas = p.RespostaPedidoSet.Count
+                                Respostas = p.RespostaPedidoSet.Count,
+                                Estado = p.Estado
 
                             }).ToList();
             myList.AddRange(pedidos);
