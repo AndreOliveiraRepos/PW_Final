@@ -183,7 +183,6 @@
     </Content>
     <Content Include="Cliente\Avaliacao.aspx" />
     <Content Include="Cliente\ClienteHome.aspx" />
-    <Content Include="Cliente\HistoricoCliente.aspx" />
     <Content Include="Cliente\ListaAvaliacoes.aspx" />
     <Content Include="Cliente\NovoPedido.aspx" />
     <Content Include="Cliente\Pedidos.aspx" />
@@ -422,7 +421,6 @@
     <Compile Include="Admin\ListaTipoOficina.aspx.designer.cs">
       <DependentUpon>ListaTipoOficina.aspx</DependentUpon>
     </Compile>
-    <Content Include="Controladores\RepairType.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -440,13 +438,6 @@
     </Compile>
     <Compile Include="Cliente\Avaliacao.aspx.designer.cs">
       <DependentUpon>Avaliacao.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Cliente\HistoricoCliente.aspx.cs">
-      <DependentUpon>HistoricoCliente.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Cliente\HistoricoCliente.aspx.designer.cs">
-      <DependentUpon>HistoricoCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cliente\ListaAvaliacoes.aspx.cs">
       <DependentUpon>ListaAvaliacoes.aspx</DependentUpon>
@@ -486,6 +477,7 @@
       <DependentUpon>Pedidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controladores\ClientReview.cs" />
+    <Compile Include="Controladores\RepairType.cs" />
     <Compile Include="Controladores\Service.cs" />
     <Compile Include="Controladores\ServiceReport.cs" />
     <Compile Include="Dashboard.Master.cs">

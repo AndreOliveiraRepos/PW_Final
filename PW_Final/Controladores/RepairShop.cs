@@ -11,10 +11,10 @@ namespace PW_Final.Controladores
     public class RepairShop
     {
         private ArrayList myList;
-        
+        private static EntitiesConnection db = new EntitiesConnection();
         private string id;
         private static RepairShop instance;
-        private EntitiesConnection db = new EntitiesConnection();
+       
         private int idShop;
         private int idTipo;
         private RepairShop()
@@ -73,5 +73,13 @@ namespace PW_Final.Controladores
             return myList;
         }
         public int getMyType() { return idTipo; }
+
+        public static ArrayList ListarTodasPorTipo(string tipo) {
+            ArrayList lista = new ArrayList();
+            
+            var list = db.OficinaSet.Where(p => p.TipoReparacaoSet.Descricao == tipo).ToList();
+            lista.AddRange(list);
+            return lista;
+        }
     }
 }

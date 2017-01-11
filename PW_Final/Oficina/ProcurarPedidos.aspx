@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="ProcurarPedidos.aspx.cs" Inherits="PW_Final.Oficina.ProcurarPedidos" %>
 
 
-<asp:Content runat="server" ID="Content2" ContentPlaceHolderID="DashMenu">
+<asp:Content runat="server" ID="Menu" ContentPlaceHolderID="DashMenu">
 
                <ul class="sidebar-nav">
                 
@@ -12,16 +12,16 @@
                             <a href="/Oficina/ProcurarPedidos.aspx">Serviços</a>
                             <ul class="sub-menu">
                                 <li><a href="/Oficina/ProcurarPedidos.aspx">Mostrar Novos</a></li>
-                                <li><a href="/Oficina/ProcurarPedidos.aspx">Mostrar Historico</a></li>
-                                <li><a href="/Oficina/ProcurarPedidos.aspx">Os Meus Pendentes</a></li>
+                                <li><a href="/Oficina/Historico.aspx">Mostrar Historico</a></li>
+                                <li><a href="/Oficina/Pendentes.aspx">Pendentes</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="/Oficina/Respostas.aspx">Os Meus Orçamentos</a>  
+                            <a href="/Oficina/MeusOrcamentos.aspx">Os Meus Orçamentos</a>  
                                 
                         </li>
                         <li>
-                            <a href="/Oficina/Respostas.aspx">Os meus Relatórios</a>  
+                            <a href="/Oficina/Relatorios.aspx">Os meus Relatórios</a>  
                                 
                         </li>
                     </ul>

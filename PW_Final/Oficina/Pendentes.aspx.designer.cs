@@ -7,19 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PW_Final {
+namespace PW_Final.Oficina {
     
     
-    public partial class _Default {
-        
-        /// <summary>
-        /// tipoDropDownList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList tipoDropDownList;
+    public partial class Pendentes {
         
         /// <summary>
         /// pedidosGridView control.

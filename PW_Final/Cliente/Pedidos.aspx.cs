@@ -22,7 +22,8 @@ namespace PW_Final.Cliente
 
         public void fillData()
         {
-            this.pedidosGridView.DataSource = client.MeusPedidos();
+            Service services = new Service();
+            this.pedidosGridView.DataSource = services.ListaPorUser(client.getID());
 
             pedidosGridView.DataBind();
 
@@ -67,16 +68,6 @@ namespace PW_Final.Cliente
             respostasGridView.DataSource = client.ListarRespostasServico(ir);
             respostasGridView.DataBind();
         }
-        protected void Avaliar(object sender, EventArgs e)
-        {
-            HiddenField hd = (HiddenField)((LinkButton)sender).FindControl("idPedido");
-            int ip = Convert.ToInt32(hd.Value);
-            hd = (HiddenField)((LinkButton)sender).FindControl("idOficina");
-            int io = Convert.ToInt32(hd.Value);
-            Avaliacao.servicoAval = ip;
-            Avaliacao.userAval = client.getID();
-            Avaliacao.OficinaAval = io;
-            Response.Redirect("~/Cliente/Avaliacao.aspx");
-        }
+        
     }
 }

@@ -45,7 +45,7 @@ namespace PW_Final.Controladores
         //actions
 
         public void EliminaPedido(Int32 indice) {
-            service.EliminaServico(indice);
+            service.EliminaServico(indice,id);
         }
         public ArrayList ListarRespostasServico(int indiceServico) {
             myAnswers = new ArrayList();

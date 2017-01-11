@@ -65,7 +65,7 @@ namespace PW_Final.Controladores
                            select new
                            {
                                idPedido = p.Id,
-                               
+                              
                                Descricao = p.DescricaoAvaria,
                                Data = p.DataPedido,
                                Tipo = p.TipoReparacaoSet.Descricao,
@@ -153,9 +153,15 @@ namespace PW_Final.Controladores
 
             return listaServico;
         }
-        public void EliminaServico(int indiceServico) {
+        public void EliminaServico(int indiceServico,string user) {
             Budget budget = new Budget();
+            ClientReview reviews = new ClientReview();
+            ServiceReport reports = new ServiceReport();
+
             budget.EliminaTodosDoServico(indiceServico);
+            reviews.EliminaTodasPorCliente(user);
+            reports.EliminaTodasPorCliente(user);
+
             ServicoSet pedido = db.ServicoSet.Single(p => p.Id.Equals(indiceServico));
             db.ServicoSet.Remove(pedido);
             db.SaveChanges();

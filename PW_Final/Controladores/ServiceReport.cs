@@ -39,7 +39,20 @@ namespace PW_Final.Controladores
             return myList;
         }
         public void EliminaRelatorio(int indiceServico, double v, int tipo) { }
-        public void EliminaTodasPorCliente(int indiceServico, double v, int tipo) { }
+        public void EliminaTodasPorCliente(string userId) {
+            var cont = db.RelatorioServicoSet.Where(a => a.ServicoSet.AspNetUsers.Id == userId).Count();
+            if (cont > 0)
+            {
+                var respostas = db.RelatorioServicoSet.Where(a => a.ServicoSet.AspNetUsers.Id == userId).ToList();
+                foreach (var item in respostas)
+                {
+
+                    db.RelatorioServicoSet.Remove(item);
+                }
+
+                db.SaveChanges();
+            }
+        }
         public void EliminaTodasPorOficina(int indiceServico, double v, int tipo) { }
         public void EliminaTodasPorServico(int indiceServico, double v, int tipo) { }
     }

@@ -2,7 +2,7 @@
 
 <asp:Content runat="server" ID="Menu" ContentPlaceHolderID="DashMenu">
 
-                 <ul class="sidebar-nav">
+                     <ul class="sidebar-nav">
                 
                     <li>
                         <a href="/Cliente/ClienteHome">Dashboard</a>
@@ -12,15 +12,14 @@
                         <ul class="sub-menu">
                             <li><a href="/Cliente/NovoPedido">Novo Pedido</a></li>
                             <li><a href="/Cliente/Pedidos">Meus Pedidos</a></li>
-                            <li><a href="/Cliente/Pedidos">Pendentes</a></li>
+                            <li><a href="/Cliente/ServicosCompletos">Pendentes</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#">As Minhas Avaliaçoes</a>  
+                        <a href="/Cliente/ListaAvaliacoes">As Minhas Avaliaçoes</a>  
                                 
                     </li>
                 </ul>
-                
                  
                             
 </asp:Content>

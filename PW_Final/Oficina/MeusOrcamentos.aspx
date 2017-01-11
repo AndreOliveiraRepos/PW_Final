@@ -12,16 +12,16 @@
                             <a href="/Oficina/ProcurarPedidos.aspx">Serviços</a>
                             <ul class="sub-menu">
                                 <li><a href="/Oficina/ProcurarPedidos.aspx">Mostrar Novos</a></li>
-                                <li><a href="/Oficina/ProcurarPedidos.aspx">Mostrar Historico</a></li>
-                                <li><a href="/Oficina/ProcurarPedidos.aspx">Os Meus Pendentes</a></li>
+                                <li><a href="/Oficina/Historico.aspx">Mostrar Historico</a></li>
+                                <li><a href="/Oficina/Pendentes.aspx">Pendentes</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="/Oficina/Respostas.aspx">Os Meus Orçamentos</a>  
+                            <a href="/Oficina/MeusOrcamentos.aspx">Os Meus Orçamentos</a>  
                                 
                         </li>
                         <li>
-                            <a href="/Oficina/Respostas.aspx">Os meus Relatórios</a>  
+                            <a href="/Oficina/Relatorios.aspx">Os meus Relatórios</a>  
                                 
                         </li>
                     </ul>
@@ -45,7 +45,8 @@
                             
                             <asp:HiddenField ID="idPedido" runat="server" value='<%# Eval("idPedido") %>'/>
                             <asp:HiddenField ID="idOficina" runat="server" value='<%# Eval("idOficina") %>'/>
-                            <asp:LinkButton ID="btnResolver" runat="server" Text="Resolver"  CssClass="btn btn-default" />
+                            <asp:LinkButton ID="btnEditar" runat="server" Text="Editar"  CssClass="btn btn-default" />
+                            <asp:LinkButton ID="btnRemover" runat="server" Text="Remover"  CssClass="btn btn-default" />
                         </ItemTemplate>
                        
                     </asp:TemplateField>

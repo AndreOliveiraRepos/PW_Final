@@ -20,6 +20,9 @@ namespace PW_Final.Controladores
                 Avaliacao = a
 
             });
+            db.ServicoSet.Find(indiceServico).Estado = "Encerrado";
+            db.OficinaSet.Find(indiceOficina).TotalAvaliacao = db.OficinaSet.Find(indiceOficina).TotalAvaliacao + 1;
+            db.OficinaSet.Find(indiceOficina).Avaliacao = (db.OficinaSet.Find(indiceOficina).Avaliacao + a) / db.OficinaSet.Find(indiceOficina).TotalAvaliacao;
             db.SaveChanges();
         }
         public void EditaDescricao(int indiceAvaliacao,string desc) { }
@@ -59,7 +62,21 @@ namespace PW_Final.Controladores
             return list;
         }
         public void EliminaAvaliacao(int indiceAvaliacao) { }
-        public void EliminaTodasPorCliente(string userId) { }
+        public void EliminaTodasPorCliente(string userId) {
+            var cont = db.AvaliacaoClienteSet.Where(a=>a.AspNetUsersId == userId).Count();
+            if (cont > 0)
+            {
+                var respostas = db.AvaliacaoClienteSet.Where(a => a.AspNetUsersId == userId).ToList();
+                foreach (var item in respostas)
+                {
+
+                    db.AvaliacaoClienteSet.Remove(item);
+                }
+
+                db.SaveChanges();
+            }
+
+        }
         public void EliminaTodasPorOficina(int indiceOficina) { }
     }
 }

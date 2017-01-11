@@ -4,22 +4,22 @@
 
                 <ul class="sidebar-nav">
                 
-                <li>
-                    <a href="/Cliente/ClienteHome">Dashboard</a>
-                </li>
-                <li>
-                    <a href="/Cliente/Pedidos">Os meus pedidos</a>
-                    <ul class="sub-menu">
-                        <li><a href="/Cliente/NovoPedido">Novo Pedido</a></li>
-                        <li><a href="/Cliente/Pedidos">Meus Pedidos</a></li>
-                        <li><a href="/Cliente/Pedidos">Pendentes</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">As Minhas Avaliaçoes</a>  
+                    <li>
+                        <a href="/Cliente/ClienteHome">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/Cliente/Pedidos">Os meus pedidos</a>
+                        <ul class="sub-menu">
+                            <li><a href="/Cliente/NovoPedido">Novo Pedido</a></li>
+                            <li><a href="/Cliente/Pedidos">Meus Pedidos</a></li>
+                            <li><a href="/Cliente/ServicosCompletos">Pendentes</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/Cliente/ListaAvaliacoes">As Minhas Avaliaçoes</a>  
                                 
-                </li>
-            </ul>
+                    </li>
+                </ul>
                             
 </asp:Content>
 

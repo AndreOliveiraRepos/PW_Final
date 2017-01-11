@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PW_Final.Controladores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,26 @@ namespace PW_Final.Oficina
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                RepairType tipos = new RepairType();
+                
+                tipoDropDownList.DataSource = tipos.ListaTodos();
+                tipoDropDownList.DataBind();
+                fillData();
+            }
+        }
+        private void fillData()
+        {
+            /*RepairShop shop;
+            shop = RepairShop.Instance;*/
+            pedidosGridView.DataSource = RepairShop.ListarTodasPorTipo(tipoDropDownList.Text);
+            pedidosGridView.DataBind();
+        }
 
+        protected void tipoDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillData();
         }
     }
 }
