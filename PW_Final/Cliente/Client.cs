@@ -116,9 +116,10 @@ namespace PW_Final.Cliente
             return true;
         }
 
-        public Boolean AvaliaReparacao(int avalia)
+        public Boolean AvaliaReparacao(int indice,int avalia)
         {
-            return false;
+
+            return true;
         }
 
         public ArrayList myRespostas(int indice) {

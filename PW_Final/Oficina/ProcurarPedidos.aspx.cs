@@ -13,32 +13,17 @@ namespace PW_Final.Oficina
     public partial class ProcurarPedidos : System.Web.UI.Page
     {
         private EntitiesConnection db = new EntitiesConnection();
+        private RepairShop shop;
         private static Int32 aux;
         protected void Page_Load(object sender, EventArgs e)
         {
+            shop = RepairShop.Instance;
             fillData();
         }
         public void fillData()
         {
-            var currentUser = User.Identity.GetUserId();
-            OficinaSet myTipo = (from o in db.OficinaSet
-                          where o.AspNetUsers_Id == currentUser
-                          select o).FirstOrDefault();
-
-            this.pedidosGridView.DataSource = (from p in db.PedidoReparacaoSet
-                                               where p.TipoReparacaoId == myTipo.TipoReparacaoId
-                                               select new
-                                               {
-                                                   idPedido = p.Id,
-                                                   Descricao = p.DescricaoAvaria,
-                                                   Data = p.DataPedido,
-                                                   Avaliacao = p.Avaliacao,
-                                                   Tipo = p.TipoReparacaoSet.Descricao,
-                                                   Respostas = p.RespostaPedidoSet.Count
-
-                                               }).ToList();
-
-
+           
+            pedidosGridView.DataSource = shop.myPedidos();
             pedidosGridView.DataBind();
 
         }
@@ -54,19 +39,9 @@ namespace PW_Final.Oficina
             int i = aux;
             double v = Convert.ToDouble(Valor.Text);
 
-            //necessary fields
-            var currentUser = User.Identity.GetUserId();
-            OficinaSet myTipo = (from o in db.OficinaSet
-                                 where o.AspNetUsers_Id == currentUser
-                                 select o).FirstOrDefault();
-            //adding
-            db.RespostaPedidoSet.Add(new RespostaPedidoSet {
-                Oficina_Id = myTipo.Id,
-                PedidoReparacaoId = i,
-                Valor = v
-                
-            });    
-            db.SaveChanges();
+            
+
+            shop.ResponderPedido(i, v);
             //refresh
             respostaPanel.Visible = false;
             aux = 0;
